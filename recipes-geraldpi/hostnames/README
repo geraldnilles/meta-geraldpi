@@ -1,0 +1,8 @@
+
+This seemd to be the easiest way to change the hostname dynamically based on image configurations.
+
+create a new recipe for each hostname, and install the package in the image you want to use.
+
+I also needed to set hostname = "" in the base-files bbappend file so that there was not a hostname conflict
+
+

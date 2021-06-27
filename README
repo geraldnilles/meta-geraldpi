@@ -1,0 +1,11 @@
+
+This layer is for creating the various linux appliances throughout my house
+
+
+I. Adding the meta-geraldpi layer to your build
+=================================================
+
+Run 'bitbake-layers add-layer meta-geraldpi'
+
+Set the distro to gpoky
+
