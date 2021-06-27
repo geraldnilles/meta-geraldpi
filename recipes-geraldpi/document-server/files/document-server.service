@@ -3,6 +3,7 @@ Description=Simple HTTP Document Server
 
 [Service]
 Type=simple
+WorkingDirectory=/media/
 ExecStart=/usr/bin/python3 -m http.server 8080
 Restart=Always
 
