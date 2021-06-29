@@ -6,9 +6,25 @@ include recipes-geraldpi/images/geraldpi-image.bb
 # Include modules in rootfs
 IMAGE_INSTALL_append += " \
         git \
-        hostname-documents \
 	document-server \
 "
 
 # python3-flask \
-# python3-setuptools \
+# python3-setuptools 
+
+
+# Add an fstab entry to automount the USB drive
+add_usb_automount() {
+
+	echo "LABEL=documents	/media	ext4	defaults,nofail	0	0" >> ${IMAGE_ROOTFS}/etc/fstab
+
+}
+
+# Update the hostname for this image
+overwrite_hostname() { 
+	echo "gpi-document" > ${IMAGE_ROOTFS}/etc/hostname
+}
+
+# Add all the rootfs modifications to the list
+ROOTFS_POSTINSTALL_COMMAND += "add_usb_automount; overwrite_hostname; "
+
