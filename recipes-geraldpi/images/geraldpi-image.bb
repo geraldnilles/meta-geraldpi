@@ -14,6 +14,7 @@ IMAGE_INSTALL_append = " \
 	avahi-daemon \
 	avahi-utils \
 	python3 \
+	bash \
 "
 
 

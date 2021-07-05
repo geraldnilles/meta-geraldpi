@@ -7,6 +7,7 @@ include recipes-geraldpi/images/geraldpi-image.bb
 IMAGE_INSTALL_append += " \
         git \
 	document-server \
+	password-store \
 "
 
 # python3-flask \
