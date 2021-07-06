@@ -7,5 +7,30 @@ I. Adding the meta-geraldpi layer to your build
 
 Run 'bitbake-layers add-layer meta-geraldpi'
 
-Set the distro to gpoky
 
+II. Edit the build/conf/local.conf file
+=======================================
+
+Set the Machine to raspberry pi::
+
+	MACHINE ??= "raspberrypi4-64"
+
+Set the distro to "gpoky"::
+
+	DISTRO ?= "gpoky"
+
+
+# Set the defautl timezone::
+
+	DEFAULT_TIMEZONE = "America/Los_Angeles"
+
+# DISABLE_VC4GRAPHICS = "1"
+
+Set the Wifi credentials:: 
+	WIFI_SSID = "IoTSubNetwork"
+	WIFI_PASSWORD = "My password"
+
+Increase the number of threads to speed up the build process::
+
+	BB_NUMBER_THREADS = "8"
+	PARALLEL_MAKE = "-j 4"

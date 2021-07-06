@@ -29,3 +29,4 @@ overwrite_hostname() {
 # Add all the rootfs modifications to the list
 ROOTFS_POSTINSTALL_COMMAND += "add_usb_automount; overwrite_hostname; "
 
+

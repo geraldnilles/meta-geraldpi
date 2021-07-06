@@ -15,6 +15,7 @@ IMAGE_INSTALL_append = " \
 	avahi-utils \
 	python3 \
 	bash \
+	bash-completion \
 "
 
 
