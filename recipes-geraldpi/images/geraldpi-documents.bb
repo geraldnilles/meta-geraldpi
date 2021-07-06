@@ -23,7 +23,7 @@ add_usb_automount() {
 
 # Update the hostname for this image
 overwrite_hostname() { 
-	echo "gpi-document" > ${IMAGE_ROOTFS}/etc/hostname
+	echo "gpi-documents" > ${IMAGE_ROOTFS}/etc/hostname
 }
 
 # Add all the rootfs modifications to the list
