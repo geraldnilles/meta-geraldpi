@@ -20,7 +20,10 @@ do_install () {
     rm -r ${D}/usr/share/zsh
 
     install -d ${D}${sysconfdir}/profile.d
+    install -d ${D}/home/root
     install -m 0644 ${WORKDIR}/pass-term-hack.sh ${D}${sysconfdir}/profile.d
+    ln -s /media/passwords ${D}/home/root/.password-store
+    ln -s /media/gnupg ${D}/home/root/.gnupg
 }
 
 FILES_${PN} += " \
@@ -28,6 +31,8 @@ FILES_${PN} += " \
 	/usr/share/bash-completion/completions \
 	/usr/share/bash-completion/completions/pass \
 	${sysconfdir}/profile.d/*.sh \
+	/home \
+	/home/root \
 "
 
 RDEPENDS_${PN} += " \
