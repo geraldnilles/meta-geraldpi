@@ -8,13 +8,15 @@ IMAGE_INSTALL_append += " \
         git \
 	document-server \
 	password-store \
+	utsushi \
+	tesseract \
 "
-
-# python3-flask \
-# python3-setuptools 
+# TODO Add my own "scan, convert to PDF and commit to git" script that requires
+# utsushi and tesseract
 
 
 # Add an fstab entry to automount the USB drive
+# This must be an EXT4 partition with the label "documents"
 add_usb_automount() {
 
 	echo "LABEL=documents	/media	ext4	defaults,nofail	0	0" >> ${IMAGE_ROOTFS}/etc/fstab
@@ -27,6 +29,6 @@ overwrite_hostname() {
 }
 
 # Add all the rootfs modifications to the list
-ROOTFS_POSTINSTALL_COMMAND += "add_usb_automount; overwrite_hostname; "
+ROOTFS_POSTINSTALL_COMMAND += " add_usb_automount; overwrite_hostname; "
 
 

@@ -19,6 +19,7 @@ IMAGE_INSTALL_append += " \
 
 
 # Add an fstab entry to automount the USB drive
+# This will contain the certbox certificates so i can upgrade the image without wiping out the HTTPS certs
 add_usb_automount() {
 
 	echo "LABEL=storage	/media	ext4	defaults,nofail	0	0" >> ${IMAGE_ROOTFS}/etc/fstab
@@ -31,6 +32,6 @@ overwrite_hostname() {
 }
 
 # Add all the rootfs modifications to the list
-ROOTFS_POSTINSTALL_COMMAND += "add_usb_automount; overwrite_hostname; "
+ROOTFS_POSTINSTALL_COMMAND += " add_usb_automount; overwrite_hostname; "
 
 

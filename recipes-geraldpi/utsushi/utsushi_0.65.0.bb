@@ -34,8 +34,13 @@ do_configure() {
 
 }
 
+# TODO Remove all the executables except the scan-cli and move it to the /usr/bin folder
+
+
 # Configure script needs help finding the boot library location
 EXTRA_OECONF_append += "--with-boost-libdir=${STAGING_DIR_TARGET}/usr/lib"
+
+# TODO Add Version number to libraries to avoid this QA Error
 
 # Generated library files do nto contains a version number so Yocto gets mad.
 # This tells the packacing script to skip that check
