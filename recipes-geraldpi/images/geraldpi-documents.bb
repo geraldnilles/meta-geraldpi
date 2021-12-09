@@ -9,8 +9,9 @@ IMAGE_INSTALL_append += " \
 	document-server \
 	password-store \
 	utsushi \
-	tesseract \
 "
+# tesseract \
+# ldd \
 # TODO Add my own "scan, convert to PDF and commit to git" script that requires
 # utsushi and tesseract
 
@@ -31,4 +32,6 @@ overwrite_hostname() {
 # Add all the rootfs modifications to the list
 ROOTFS_POSTINSTALL_COMMAND += " add_usb_automount; overwrite_hostname; "
 
+
+# CORE_IMAGE_EXTRA_INSTALL += " ldd "
 

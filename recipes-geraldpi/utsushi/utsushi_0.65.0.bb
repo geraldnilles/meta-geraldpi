@@ -10,6 +10,11 @@ SRC_URI = "https://support.epson.net/linux/src/scanner/imagescanv3/common/images
 
 SRC_URI[sha256sum] = "e83704398c51a3166fd62c25b89e95cf6262e52f3dc6e627db3e7556e2220d64"
 
+
+# TODO THere is currently a segfault when you attempt to run the scan command.
+# The list command does work, however.  need to dig into that
+# https://www.doulos.com/knowhow/arm-embedded/embedded-linux-debugging-user-space-seg-faults/ 
+
 FILES_${PN} += " \
 "
 
