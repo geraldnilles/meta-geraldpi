@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# This script will scan a new document, convert it to a searchable PDF, and
+# save it on the uSB drive with revision control
+
+
+cd /media/documents
+
+# 
+BASENAME="$1"
+
+# if first 8 characters are not all numbers, then add today's date as a prefix
+# yyyymmdd-$BASENAME
+
+OUTPUT="$BASENAME.pdf"
+
+# While loop
+# If output filenme exists, increament the suffix number by 1
+
+# Scan the Document using greyscale input and use Tesseract to read the english text
+/usr/libexec/utsushi/utsushi-scan-cli \
+	--image-type Grayscale \
+	--resolution 300 | \
+	tesseract stdin \
+	temp -l eng \
+	--dpi 300 pdf
+
+mv temp.pdf "$OUTPUT"
+
+git add "$OUTPUT"
+
+git commit -m "Added $BASENAME"
+
+
