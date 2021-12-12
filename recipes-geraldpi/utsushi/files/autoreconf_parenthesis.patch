@@ -1,0 +1,60 @@
+diff --git a/configure.ac b/configure.ac
+index 8997eb9..9e6ce85 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -352,7 +352,7 @@ AS_IF([test xno != "x$with_usb"],
+ AM_CONDITIONAL([have_libusb], [test x != "x$LIBUSB_LIBS"])
+ 
+ AS_IF([test xno != "x$with_magick_pp"],
+-   AS_CASE("x$with_magick_pp",
++   [AS_CASE("x$with_magick_pp",
+      [xGraphicsMagick],
+        [PKG_CHECK_MODULES([LIBMAGICK_PP], [GraphicsMagick++],
+           [AC_DEFINE([HAVE_GRAPHICS_MAGICK_PP], [1])])
+@@ -373,42 +373,12 @@ AS_IF([test xno != "x$with_magick_pp"],
+        ],
+      [dnl default case
+       AC_MSG_ERROR([unknown value: --with-magick-pp=$with_magick_pp])
+-     ]))
++     ])
++   ])
+ AM_CONDITIONAL([have_libmagick_pp], [test x != "x$LIBMAGICK_PP_LIBS"])
+ 
+-AS_IF([test xno != "x$with_magick"],
+-   AS_CASE("x$with_magick",
+-     [xGraphicsMagick],
+-       [AC_CHECK_PROGS([MAGICK_CONVERT], [gm])
+-        AS_IF([test xgm != x$MAGICK_CONVERT],
+-          [AC_MSG_ERROR([$with_magick requested but not found])])
+-        AC_DEFINE([HAVE_GRAPHICS_MAGICK], [1])
+-        MAGICK_CONVERT="gm convert"
+-       ],
+-     [xImageMagick],
+-       [AC_CHECK_PROGS([MAGICK_CONVERT], [convert])
+-        AS_IF([test xconvert != x$MAGICK_CONVERT],
+-          [AC_MSG_ERROR([$with_magick requested but not found])])
+-        AC_DEFINE([HAVE_IMAGE_MAGICK], [1])
+-       ],
+-     [xyes|xcheck],
+-       [AC_CHECK_PROGS([MAGICK_CONVERT], [gm convert])
+-        AS_CASE(x$MAGICK_CONVERT,
+-          [xgm],
+-            [AC_DEFINE([HAVE_GRAPHICS_MAGICK], [1])
+-             MAGICK_CONVERT="gm convert"
+-            ],
+-          [xconvert],
+-            [AC_DEFINE([HAVE_IMAGE_MAGICK], [1])
+-            ],
+-          [dnl default case
+-           AS_IF([test xcheck != "x$with_magick"],
+-             [AC_MSG_ERROR([magick required but not found])])
+-          ])
+-       ],
+-     [dnl default case
+-      AC_MSG_ERROR([unknown value: --with-magick=$with_magick])
+-     ]))
++AC_DEFINE([HAVE_GRAPHICS_MAGICK], [1])
++MAGICK_CONVERT="gm convert"
+ AC_DEFINE_UNQUOTED([MAGICK_CONVERT], ["$MAGICK_CONVERT"])
+ AM_CONDITIONAL([have_magick], [test x != "x$MAGICK_CONVERT"])
+
