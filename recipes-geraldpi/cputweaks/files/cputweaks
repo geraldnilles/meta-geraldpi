@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# This script will tweak the CPU settings from userspace rather tha modifying
+# the default kernel. Right now it just adjusts the governor, but we can do
+# more interesting things later
+
+
+# Set all cores' governor to "OnDemand"
+echo ondemand | tee /sys/devices/system/cpu/cpu{0,1,2,3}/cpufreq/scaling_governor
+

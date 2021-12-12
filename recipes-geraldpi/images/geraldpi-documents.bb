@@ -10,6 +10,7 @@ IMAGE_INSTALL_append += " \
 	password-store \
 	utsushi \
 	tesseract \
+	cputweaks \
 "
 # TODO Add my own "scan, convert to PDF and commit to git" script that requires
 # utsushi and tesseract
@@ -38,6 +39,4 @@ move_rsa_key() {
 # Add all the rootfs modifications to the list
 ROOTFS_POSTINSTALL_COMMAND += " add_usb_automount; overwrite_hostname; move_rsa_key; "
 
-
-# CORE_IMAGE_EXTRA_INSTALL += " ldd "
 
