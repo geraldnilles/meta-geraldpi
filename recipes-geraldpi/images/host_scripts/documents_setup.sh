@@ -14,11 +14,16 @@
 
 fdisk... to create 1 partition
 
-mkfs.ext4
+# Format the entire partition as an ext4 filesystem. The label is set to
+# documents so the right partition is mounted
+mkfs.ext4 -L documents
 
-mount
+mkdir temp
 
-cd /media/
+mount /sd... ./temp
+
+cd ./temp
+
 
 mkdir dropbear
 
@@ -26,4 +31,13 @@ mkdir gnupg
 
 mkdir passwords
 
+mkdir documents
+
+cd ..
+
+sync
+
+umount ./temp
+
+rm -rf temp
 

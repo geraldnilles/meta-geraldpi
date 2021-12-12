@@ -20,13 +20,13 @@ Set the distro to "gpoky"::
 	DISTRO ?= "gpoky"
 
 
-# Set the defautl timezone::
+Set the defautl timezone::
 
 	DEFAULT_TIMEZONE = "America/Los_Angeles"
 
-# DISABLE_VC4GRAPHICS = "1"
 
 Set the Wifi credentials:: 
+
 	WIFI_SSID = "IoTSubNetwork"
 	WIFI_PASSWORD = "My password"
 
@@ -34,3 +34,22 @@ Increase the number of threads to speed up the build process::
 
 	BB_NUMBER_THREADS = "8"
 	PARALLEL_MAKE = "-j 4"
+
+
+III. Prepare a USB Drive
+========================
+
+In most of my images, the persistant storage is pulled off the sd card and put
+into an external USB drive. This allow one to upgrade th OS and swap out an SD
+card without loosing all of the existing data. Anecdotally, i have also found
+that the SD card is less reliable than the USB flash drive. This architecture
+leans into that thesis.  At some point in the future, i may also switch the
+rootfs into a read-only filesystem and this would allow for that
+
+Host scripts are provided in the recipes-geraldpi/images/host_scripts/ folder
+for preparing the USB drive. THese scripts can be run on the host machine to
+prepare the USB flash drive for mounting
+
+
+IV. Build one of the images
+============================
