@@ -23,6 +23,10 @@ then
 else
 	echo "Writing New Hostname:"
 	echo "$HOSTNAME$SUFFIX" > /etc/hostname
+	# Wait 10 seconds, sync the file system, and reboot
+	sleep 10
+	sync
+	reboot
 fi
 
 
