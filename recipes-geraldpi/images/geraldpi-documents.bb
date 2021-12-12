@@ -9,9 +9,8 @@ IMAGE_INSTALL_append += " \
 	document-server \
 	password-store \
 	utsushi \
+	tesseract \
 "
-# tesseract \
-# ldd \
 # TODO Add my own "scan, convert to PDF and commit to git" script that requires
 # utsushi and tesseract
 
@@ -29,8 +28,15 @@ overwrite_hostname() {
 	echo "gpi-documents" > ${IMAGE_ROOTFS}/etc/hostname
 }
 
+
+# Link the external drive dropbear RSA key to the /etc folder
+move_rsa_key() {
+	rm -r ${IMAGE_ROOTFS}/etc/dropbear
+	ln -s /media/dropbear ${IMAGE_ROOTFS}/etc/dropbear
+}
+
 # Add all the rootfs modifications to the list
-ROOTFS_POSTINSTALL_COMMAND += " add_usb_automount; overwrite_hostname; "
+ROOTFS_POSTINSTALL_COMMAND += " add_usb_automount; overwrite_hostname; move_rsa_key; "
 
 
 # CORE_IMAGE_EXTRA_INSTALL += " ldd "
