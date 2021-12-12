@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# This is similar to the document sync script, except it uses rsync to pull
+# from the remotes. 
+
+# A timestamp file will be contained in each videos folder. Whenever
+# modififications are made to any of the videos, that file shoudl be updated
+# with the current timestamp.  WHen syncing is performed, that file will be
+# checked first.  If that file is less than or equal to the local timestamp
+# file, the sync is aborted.  If the timestmap file is greater than the others
+
+# THe timestamp file will be the last file to be synced in the even the sync
+# stopps mid way.
+
+# TODO Look into git-LFS, it might be easier to just use that rather than use
+# timestamps and other hacks
+

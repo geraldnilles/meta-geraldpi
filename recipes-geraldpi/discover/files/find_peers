@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+avahi-browse --parsable --ignore-local --resolve --terminate _ssh._tcp | grep IPv4 
+
+# TODO Use AWK to pull out IP address and hostname only
+
+
