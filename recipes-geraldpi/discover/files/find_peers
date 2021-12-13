@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# TODO If no argument is provided, list only peers that have the same base hostname
+
+# TODO if the argument is "all" list all peers.
+
 
 # Generate a list of hostnames and resolved IPv4 addresses
 avahi-browse --parsable --ignore-local --resolve --terminate _ssh._tcp | awk '
