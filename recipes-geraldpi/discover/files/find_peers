@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-avahi-browse --parsable --ignore-local --resolve --terminate _ssh._tcp | grep IPv4 
 
-# TODO Use AWK to pull out IP address and hostname only
-
+# Generate a list of hostnames and resolved IPv4 addresses
+avahi-browse --parsable --ignore-local --resolve --terminate _ssh._tcp | awk '
+BEGIN { FS=";" } 
+{
+	if ( $1 == "=" && $3 == "IPv4" )
+		print $4 " " $8 ;
+}'
 
