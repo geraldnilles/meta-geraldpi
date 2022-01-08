@@ -41,10 +41,11 @@ III. Prepare a USB Drive
 
 In most of my images, the persistant storage is pulled off the sd card and put
 into an external USB drive. This allow one to upgrade th OS and swap out an SD
-card without loosing all of the existing data. Anecdotally, i have also found
+card without losing all of the existing data. Anecdotally, i have also found
 that the SD card is less reliable than the USB flash drive. This architecture
 leans into that thesis.  At some point in the future, i may also switch the
-rootfs into a read-only filesystem and this would allow for that
+rootfs into a read-only filesystem. This would further minimize writes to the
+SD card and improve reliability
 
 Host scripts are provided in the recipes-geraldpi/images/host_scripts/ folder
 for preparing the USB drive. THese scripts can be run on the host machine to
