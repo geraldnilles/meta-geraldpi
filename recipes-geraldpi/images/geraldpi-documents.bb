@@ -5,11 +5,9 @@ include recipes-geraldpi/images/geraldpi-image.bb
 
 # Include modules in rootfs
 IMAGE_INSTALL_append += " \
-        git \
 	document-server \
 	password-store \
-	utsushi \
-	tesseract \
+	scanner-scripts \
 	cputweaks \
 "
 # TODO Add my own "scan, convert to PDF and commit to git" script that requires

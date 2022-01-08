@@ -3,5 +3,7 @@
 
 # runs each sync scripts
 
-
+sync_docs
+sync_photos
+sync_videos
 

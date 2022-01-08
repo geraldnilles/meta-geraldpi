@@ -12,10 +12,13 @@ then
 	exit -1
 fi
 
+if [ ! -f ~/.gitconfig ]
+then
 # Initialize the system-wide git config using the unqiue hostname as the username
 git config --global ...
 git config --global ...
 git config --global ...
+fi
 
 # Initialize the repo if it has not bee setup yet
 git status
@@ -28,7 +31,7 @@ fi
 git remote remove ...
 
 # Get a list of all gpi-documents devices on the network
-avahi...
+find_peers
 
 # Add git remotes for each discovered devices on the network
 git remote add ...

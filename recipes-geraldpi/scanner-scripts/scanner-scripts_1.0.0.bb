@@ -17,7 +17,7 @@ do_install() {
         install -m 0755 ${WORKDIR}/merge ${D}${bindir}
 }
 
-RDEPENDS = " \
+RDEPENDS_${PN} = " \
 	utsushi \
 	tesseract \
 	ghostscript \

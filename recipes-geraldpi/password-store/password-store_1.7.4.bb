@@ -38,6 +38,7 @@ FILES_${PN} += " \
 RDEPENDS_${PN} += " \
 	gnupg \
 	tree \
+	git \
 	coreutils \
 "
 
