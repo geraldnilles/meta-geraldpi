@@ -9,13 +9,18 @@ cd /media/documents
 # 
 BASENAME="$1"
 
-# if first 8 characters are not all numbers, then add today's date as a prefix
+# TODO if first 8 characters are not all numbers, then add today's date as a prefix
 # yyyymmdd-$BASENAME
 
 OUTPUT="$BASENAME.pdf"
 
+if [ -f "$OUTPUT" ]; then
+    echo "$OUTPUT already exists."
+    exit -1
+fi
+
 # While loop
-# If output filenme exists, increament the suffix number by 1
+# TODO If output filenme exists, increament the suffix number by 1
 
 # Scan the Document using greyscale input and use Tesseract to read the english text
 /usr/libexec/utsushi/utsushi-scan-cli \
@@ -24,6 +29,9 @@ OUTPUT="$BASENAME.pdf"
 	tesseract stdin \
 	temp -l eng \
 	--dpi 300 pdf
+
+# TODO Perform some checks to make sure new pdf is legit
+# Make sure size is reasonable.  Make sure MIME type is pdf
 
 mv temp.pdf "$OUTPUT"
 

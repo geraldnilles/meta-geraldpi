@@ -2,15 +2,15 @@
 
 # THis script will merge all of the input files into a single PDF
 
-# Verify the output file does not exist
-# Verify all the input foes do exist
+# TODO Verify the output file does not exist
+# TODO Verify all the input foes do exist
 
 # Merge
 gs -q -sPAPERSIZE=letter -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$1 ${@:2}
 
-git add $OUTPUT
+git add $1
 
-git rm $INPUT FILES
+git rm ${@:2}
 
-git commit -m "Merge multiple files into $1"
+git commit -m "Merge multiple pdfs into $1"
 
