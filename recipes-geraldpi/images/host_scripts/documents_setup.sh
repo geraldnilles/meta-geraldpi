@@ -17,19 +17,19 @@
 if [ -z $1 ]
 then
 	echo "Please provide a device name to format"
+	exit 128
 fi
 
-# TODO THIs script is currently just an outline and is not tested
-echo "Script not Tested"
-exit
 
 (
 echo g # Create a new empty DOS partition table
 echo n # Add a new partition
-echo p # Primary partition
-echo 1 # Partition number
-echo   # First sector (Accept default: 1)
-echo   # Last sector (Accept default: varies)
+echo " "  # Partition number
+echo " "  # First sector (Accept default: 1)
+echo " "  # Last sector (Accept default: varies)
+echo " "  # Last sector (Accept default: varies)
+echo " "  # Last sector (Accept default: varies)
+echo " "  # Last sector (Accept default: varies)
 echo w # Write changes
 ) | fdisk $1
 
@@ -57,5 +57,5 @@ sync
 
 umount ./temp
 
-rm -rf temp
+rm -r temp
 
