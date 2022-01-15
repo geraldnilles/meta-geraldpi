@@ -11,12 +11,10 @@ IMAGE_INSTALL_append = " \
 	linux-firmware-rpidistro-bcm43455 \
 	kernel-modules \
 	tzdata \
-	avahi-daemon \
-	avahi-utils \
-	python3 \
 	bash \
 	bash-completion \
 	hostrename \
+	discover \
 "
 
 

@@ -8,6 +8,7 @@ IMAGE_INSTALL_append += " \
 	document-server \
 	password-store \
 	scanner-scripts \
+	sync-scripts \
 	cputweaks \
 "
 # TODO Add my own "scan, convert to PDF and commit to git" script that requires

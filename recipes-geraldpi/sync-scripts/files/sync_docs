@@ -12,12 +12,11 @@ then
 	exit -1
 fi
 
+# If gitconfig does not exist, generate unique email and username based on hostname
 if [ ! -f ~/.gitconfig ]
 then
-# Initialize the system-wide git config using the unqiue hostname as the username
-git config --global ...
-git config --global ...
-git config --global ...
+git config --global user.email "$( hostname )@home.com"
+git config --global user.name "$( hostname )"
 fi
 
 # Initialize the repo if it has not bee setup yet
@@ -28,14 +27,24 @@ then
 fi
 
 # Remove all git remotes from the current repo
-git remote remove ...
+for remote in $( git remote )
+do
+	git remote remove $remote
+done
 
 # Get a list of all gpi-documents devices on the network
-find_peers
+for peer in $( find_peers )
+do
 
-# Add git remotes for each discovered devices on the network
-git remote add ...
+	# Add git remotes for each discovered devices on the network
+	git remote add $peer ssh://root@$peer:/media/documents
+done
 
 # For each remote, perform a git pull
+for remote in $( git remote )
+do
 
+	git pull $peer master
+
+done
 
