@@ -15,13 +15,13 @@ fi
 # If gitconfig does not exist, generate unique email and username based on hostname
 if [ ! -f ~/.gitconfig ]
 then
-git config --global user.email "$( hostname )@home.com"
-git config --global user.name "$( hostname )"
+	git config --global user.email "$( hostname )@home.com"
+	git config --global user.name "$( hostname )"
 fi
 
 # Initialize the repo if it has not bee setup yet
 git status
-if [ $? -ne 0 ] 
+if [ $? -ne 0 ]
 then
 	git init
 fi
@@ -33,7 +33,7 @@ do
 done
 
 # Get a list of all gpi-documents devices on the network
-for peer in $( find_peers )
+for peer in $( find_peers | awk '{ print $1  }' )
 do
 
 	# Add git remotes for each discovered devices on the network
@@ -44,7 +44,9 @@ done
 for remote in $( git remote )
 do
 
-	git pull $peer master
+	# Modify the ssh command so that it does not prompt you to verify the
+	# trusted host
+	GIT_SSH_COMMAND="ssh -y " git pull $peer master
 
 done
 

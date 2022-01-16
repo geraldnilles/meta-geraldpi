@@ -8,6 +8,7 @@ inherit systemd
 SRC_URI = " \
     file://hostrename.service \
     file://hostrename \
+    file://hostbasename \
 "
 
 S = "${WORKDIR}"
@@ -18,6 +19,7 @@ do_install() {
 
         install -d ${D}/${bindir}
         install -m 0755 ${WORKDIR}/hostrename ${D}${bindir}
+        install -m 0755 ${WORKDIR}/hostbasename ${D}${bindir}
 }
 
 SYSTEMD_AUTO_ENABLE = "enable"
