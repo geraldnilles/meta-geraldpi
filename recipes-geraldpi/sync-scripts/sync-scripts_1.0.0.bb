@@ -10,6 +10,7 @@ SRC_URI = " \
     file://sync_photos \
     file://sync-scripts.service \
     file://sync_videos \
+    file://sync_passwords \
 "
 
 S = "${WORKDIR}"
