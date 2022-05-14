@@ -3,10 +3,11 @@ Description=Aircast Service
 After=systemd-networkd.service
 
 [Service]
+Type=simple
 ExecStart=/usr/bin/aircast
 Restart=always
 RestartSec=10
 
-Install]
+[Install]
 WantedBy=multi-user.target
 

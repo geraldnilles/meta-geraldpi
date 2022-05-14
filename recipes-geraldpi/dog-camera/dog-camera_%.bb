@@ -17,7 +17,7 @@ PV = "1.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-INST_DIR = "/opt/Dog-Camera"
+INST_DIR = "/opt/DogCamera"
 
 
 do_install() {
@@ -37,6 +37,10 @@ do_install() {
 FILES_${PN} += " \
 	${systemd_unitdir}/* \
 	${INST_DIR}/* \
+"
+
+RDEPENDS_${PN} += " \
+	expressjs \
 "
 
 SYSTEMD_AUTO_ENABLE = "enable"
