@@ -5,8 +5,15 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 inherit systemd
 
 SRC_URI = " \
-    git://github.com/geraldnilles/DogCamera.git;branch=main;rev=3780149214b9de7b1815706dfd4adc5b131de956 \
+    git://github.com/geraldnilles/DogCamera.git;branch=main \
 "
+
+# USe this if you want to use a specific commit
+SRCREV = "3780149214b9de7b1815706dfd4adc5b131de956"
+
+# Use this if you want to automatically pull the latest commit
+#SRCREV = "${AUTOREV}"
+PV = "1.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
