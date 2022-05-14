@@ -22,7 +22,7 @@ do_install() {
 }
 
 
-# SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE_${PN} = " aircast.service "
 
 # Using the pre-compiled binary in the git repo so this QA step needs to be skipped
