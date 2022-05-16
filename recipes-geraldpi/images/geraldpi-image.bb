@@ -13,8 +13,8 @@ IMAGE_INSTALL_append = " \
 	tzdata \
 	bash \
 	bash-completion \
-	hostrename \
 	discover \
+	readonly-rootfs \
 "
 
 

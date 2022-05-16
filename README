@@ -54,3 +54,13 @@ prepare the USB flash drive for mounting
 
 IV. Build one of the images
 ============================
+
+
+
+V. TODOs
+=========
+
+[ ] Only enable Wifi for devices i plan on using wifi for... perhaps add a switch in the "image" recipe to delete the wpa_supplicant file?
+[ ] Add a "Burn In" script that periodically pushes through important info (like the SSH tolken) to the RW partition
+[ ] Only star the "read only" mode when a "rootro" file exists in the boot partition
+

@@ -2,6 +2,7 @@
 
 # Generate a tmpfs to hold all the new mountpoints
 mount -t proc proc /proc
+mount -t sysfs sysfs /sys
 mount -t tmpfs inittemp /mnt
 
 cd /mnt
@@ -28,10 +29,21 @@ mount -t overlay -o lowerdir=/mnt/lower,upperdir=/mnt/rw/upper,workdir=/mnt/rw/w
 
 cd /mnt/newroot
 
+# Get the Hostname from the Read-only Rootfs
+HOSTNAME=$( cat /etc/hostname )
+
+# Get the serial number of the SoC
+SERIAL=$( cat /sys/firmware/devicetree/base/serial-number )
+
+# Grab the last 8 digits of the serial and add a dash to be beginning
+SUFFIX="-${SERIAL: -8}"
+
+# Set a new Hostname for the RamFS Overlayed RootFS
+echo "$HOSTNAME$SUFFIX" > etc/hostname
+
 # Make mountpoints for the underlying drive
 mkdir rw
 mkdir ro 
-
 
 pivot_root . mnt
 exec chroot . sh -c "$(cat <<END
