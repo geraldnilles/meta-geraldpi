@@ -31,6 +31,11 @@ then
 	exit 128
 fi
 
+# If not in SD_UPDATE mode, then 
+if [ -z $SD_UPDATE ]
+then
+
+echo "Creting new SD Card"
 
 (
 echo o # Create a new empty DOS partition table
@@ -59,12 +64,21 @@ echo w # Write changes
 ) | fdisk -W always -w always $1
 
 
-# Format the entire partition as an ext4 filesystem. The label is set to
-# documents so the right partition is mounted
+# Format the Boot and Storage partitions
 mkfs.vfat -n boot "$11"
 
+mkfs.ext4 -L storage "$13"
+
+else
+
+echo "Updating SD Card"
+
+fi
+
+# Wait a beat for the parititons to be detected by the kernel
 sleep 1
 
+# Copy all the boot files to the boot parition
 MOUNTPOINT=/tmp/gpimount
 mkdir $MOUNTPOINT
 
@@ -81,10 +95,8 @@ do
 
 	if [ -z $dst ]
 	then
-		echo "Copy $src to boot partition"
 		cp $src $MOUNTPOINT/
 	else
-		echo "Copy $src to $dst"
 		mkdir -p $MOUNTPOINT/$( dirname $dst)
 		cp $src $MOUNTPOINT/$dst
 	fi
