@@ -31,9 +31,12 @@ mkdir -p /mnt/vol_part/upper
 mkdir -p /mnt/vol_part/work
 
 
+# Mount the Boot Partition to check for a readonly file
+mount /dev/mmcblk0p1 /boot
+
 # Adjust the overlay directories depending on the mount type...
 # THis is hardcoded for now, later, i will look for a boot flag or some other indicator
-if false
+if [[ -f /boot/readonly ]]
 then
 	# Read-Only Mode - any changes will not persist when the device reboots
 	LOWERDIR=/mnt/nvol_part/upper:/mnt/squash_part
@@ -47,6 +50,9 @@ else
 	WORKDIR=/mnt/nvol_part/work
 	
 fi
+
+# Unmount the boot partition since we no longer need it
+umount /boot
 
 mount -t overlay -o lowerdir=$LOWERDIR,upperdir=$UPPERDIR,workdir=$WORKDIR overlayfs-root /mnt/newroot
 
