@@ -10,7 +10,9 @@ IMAGE_INSTALL_append += " \
 	cputweaks \
 "
 
-
+IMAGE_INSTALL_remove += " \
+	wpa-supplicant \
+"
 
 # Add an fstab entry to automount the USB drive
 # This must be an EXT4 partition with the label "documents"
