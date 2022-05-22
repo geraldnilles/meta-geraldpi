@@ -31,7 +31,7 @@ then
 	exit 128
 fi
 
-# If not in SD_UPDATE mode, then 
+# If not in SD_UPDATE mode, the script will repartition and format the SDcard
 if [ -z $SD_UPDATE ]
 then
 
@@ -67,7 +67,8 @@ echo w # Write changes
 # Format the Boot and Storage partitions
 mkfs.vfat -n boot "$11"
 
-mkfs.ext4 -L storage "$13"
+# Format the nonvolatile partition
+mkfs.ext4 -L nvol "$13"
 
 else
 
@@ -84,8 +85,8 @@ mkdir $MOUNTPOINT
 
 mount "$11" $MOUNTPOINT
 
+# Get the Image boog files from the .env file
 source $3
-
 for pair in $IMAGE_BOOT_FILES
 do
 	#echo $pair
