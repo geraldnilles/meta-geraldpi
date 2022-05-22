@@ -28,14 +28,7 @@ overwrite_hostname() {
 	echo "gpi-documents" > ${IMAGE_ROOTFS}/etc/hostname
 }
 
-
-# Link the external drive dropbear RSA key to the /etc folder
-move_rsa_key() {
-	rm -r ${IMAGE_ROOTFS}/etc/dropbear
-	ln -s /media/dropbear ${IMAGE_ROOTFS}/etc/dropbear
-}
-
 # Add all the rootfs modifications to the list
-ROOTFS_POSTINSTALL_COMMAND += " add_usb_automount; overwrite_hostname; move_rsa_key; "
+ROOTFS_POSTINSTALL_COMMAND += " add_usb_automount; overwrite_hostname; "
 
 

@@ -14,9 +14,12 @@ modprobe overlay
 # Generate new Mountpoint directories
 mkdir /mnt/squash_part
 mkdir /mnt/nvol_part
+mkdir /mnt/vol_part
 mkdir /mnt/newroot
 
 # Mount the base OS Squash Partition 
+# TODO Copy SquashFS to RAM before mounting
+# OR Make a bootloader partition the mounts the Squashfs from boot parition?
 mount /dev/mmcblk0p2 /mnt/squash_part
 
 # Setup a non-volitile overlay partition
@@ -25,7 +28,6 @@ mkdir -p /mnt/nvol_part/upper
 mkdir -p /mnt/nvol_part/work
 
 # Setup a volitile overlay partition for Read-only boots
-mkdir /mnt/vol_part
 mount -t tmpfs volpart /mnt/vol_part
 mkdir -p /mnt/vol_part/upper
 mkdir -p /mnt/vol_part/work

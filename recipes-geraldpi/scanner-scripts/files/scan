@@ -35,8 +35,14 @@ fi
 
 mv temp.pdf "$OUTPUT"
 
+# If gitconfig does not exist, generate unique email and username based on hostname
+if [ ! -f ~/.gitconfig ]
+then
+	git config --global user.email "$( hostname )@home.com"
+	git config --global user.name "$( hostname )"
+fi
+
 git add "$OUTPUT"
 
 git commit -m "Added $BASENAME"
-
 
