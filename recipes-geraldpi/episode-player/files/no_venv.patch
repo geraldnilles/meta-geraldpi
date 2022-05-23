@@ -1,3 +1,7 @@
+##############
+# Since we are installing all the needed packages, there is not need for a
+# virtual environment
+##############
 diff --git a/run.sh b/run.sh
 index 0906c41..4546671 100755
 --- a/run.sh

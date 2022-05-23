@@ -14,7 +14,7 @@ IMAGE_INSTALL_append += " \
 "
 
 
-#	python3-setuptools \
+# python3-setuptools 
 
 # Add an fstab entry to automount the USB drive
 add_usb_automount() {
