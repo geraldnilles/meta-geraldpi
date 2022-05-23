@@ -1,10 +1,7 @@
-# Episode Server
+# Webapps
 ################
-# This is a server that will host TV episodes that can be played via a
-# chromecast.  This will host an HTTP app that kicks up a chromecast playlist
-# and allows the chromecast to read the MP4 files
-#
-# All of the video files will be stored the /media/episodes folder. 
+# This server will run a handful of Python Flask Webapps
+# It will run
 
 
 # Base this image on core-image-minimal
@@ -13,13 +10,11 @@ include recipes-geraldpi/images/geraldpi-image.bb
 
 # Include modules in rootfs
 IMAGE_INSTALL_append += " \
-	episode-server \
-	rsync \
-	python3-flask \
-	python3-setuptools \
+	episode-player \
 "
 
 
+#	python3-setuptools \
 
 # Add an fstab entry to automount the USB drive
 add_usb_automount() {
@@ -30,7 +25,7 @@ add_usb_automount() {
 
 # Update the hostname for this image
 overwrite_hostname() { 
-	echo "gpi-episodes" > ${IMAGE_ROOTFS}/etc/hostname
+	echo "gpi-webapps" > ${IMAGE_ROOTFS}/etc/hostname
 }
 
 # Add all the rootfs modifications to the list

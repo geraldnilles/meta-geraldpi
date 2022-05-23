@@ -1,0 +1,14 @@
+diff --git a/run.sh b/run.sh
+index 0906c41..4546671 100755
+--- a/run.sh
++++ b/run.sh
+@@ -2,8 +2,6 @@
+ 
+ cd "$(dirname "$0")"
+ 
+-. venv/bin/activate
+-
+ 
+ export FLASK_APP=episodes
+ export FLASK_ENV=development
+
