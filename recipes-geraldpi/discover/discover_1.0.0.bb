@@ -22,7 +22,6 @@ do_install() {
 RDEPENDS_${PN} = "\
     avahi-daemon \
     avahi-utils \
-    hostrename \
 "
 
 

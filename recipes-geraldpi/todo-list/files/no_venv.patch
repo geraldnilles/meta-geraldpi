@@ -1,0 +1,31 @@
+##############
+# Since we are installing all the needed packages, there is not need for a
+# virtual environment. This removes the venv invokation from each
+##############
+diff --git a/run.sh b/run.sh
+index 9f7acd4..c749f5b 100755
+--- a/run.sh
++++ b/run.sh
+@@ -2,8 +2,6 @@
+ 
+ cd "$(dirname "$0")"
+ 
+-. venv/bin/activate
+-
+ export FLASK_APP=todos
+ export FLASK_ENV=development
+ flask run -p 8081 --host=0.0.0.0
+diff --git a/scripts/clean.sh b/scripts/clean.sh
+index 57c7cca..a57bbe2 100755
+--- a/scripts/clean.sh
++++ b/scripts/clean.sh
+@@ -6,8 +6,6 @@ cd "$(dirname "$0")"
+ # Jump back to the root
+ cd ..
+ 
+-. venv/bin/activate
+-
+ cd todos
+ 
+ python clean.py
+

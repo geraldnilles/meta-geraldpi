@@ -1,7 +1,6 @@
 # Webapps
 ################
 # This server will run a handful of Python Flask Webapps
-# It will run
 
 
 # Base this image on core-image-minimal
@@ -11,15 +10,19 @@ include recipes-geraldpi/images/geraldpi-image.bb
 # Include modules in rootfs
 IMAGE_INSTALL_append += " \
 	episode-player \
+	todo-list \
 "
 
+# No need to enable Wifi since this will be hardwired
+IMAGE_INSTALL_remove += " \
+	wpa-supplicant \
+"
 
-# python3-setuptools 
 
 # Add an fstab entry to automount the USB drive
 add_usb_automount() {
 
-	echo "LABEL=storage	/media	ext4	defaults,nofail	0	0" >> ${IMAGE_ROOTFS}/etc/fstab
+	echo "LABEL=webapps	/media	ext4	defaults,nofail	0	0" >> ${IMAGE_ROOTFS}/etc/fstab
 
 }
 

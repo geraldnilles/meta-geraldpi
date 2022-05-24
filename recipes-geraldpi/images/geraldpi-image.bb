@@ -17,7 +17,7 @@ IMAGE_INSTALL_append = " \
 	readonly-rootfs \
 "
 
-IMAGE_FSTYPES += " ext4 squashfs " 
+IMAGE_FSTYPES = " wic squashfs " 
 
 IMAGE_FEATURES += " ssh-server-dropbear "
 
