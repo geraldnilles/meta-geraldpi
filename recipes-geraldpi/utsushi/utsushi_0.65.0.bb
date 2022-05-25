@@ -11,10 +11,10 @@ SRC_URI = "https://support.epson.net/linux/src/scanner/imagescanv3/common/images
 
 SRC_URI[sha256sum] = "e83704398c51a3166fd62c25b89e95cf6262e52f3dc6e627db3e7556e2220d64"
 
-FILES_${PN} += " \
+FILES:${PN} += " \
 "
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
 	boost \
 	libusb1 \
 "
@@ -33,12 +33,15 @@ inherit autotools
 inherit gettext
 
 # Configure script needs help finding the boot library location
-EXTRA_OECONF_append += " --with-boost-libdir=${STAGING_DIR_TARGET}/usr/lib "
-EXTRA_OECONF_append += " --with-magick "
-EXTRA_OECONF_append += " --with-jpeg --with-tiff "
+EXTRA_OECONF:append = " \
+    --with-boost-libdir=${STAGING_DIR_TARGET}/usr/lib \
+    --with-magick \
+    --with-jpeg --with-tiff \
+"
 
 # TODO Add Version number to libraries to avoid this QA Error
 
 # Generated library files do nto contains a version number so Yocto gets mad.
 # This tells the packacing script to skip that check
-INSANE_SKIP_${PN} = "dev-so"
+INSANE_SKIP:${PN} = "dev-so"
+

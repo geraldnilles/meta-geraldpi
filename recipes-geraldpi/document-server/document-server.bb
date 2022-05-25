@@ -16,10 +16,10 @@ do_install() {
         install -m 0644 ${WORKDIR}/*.service ${D}${systemd_unitdir}/system
 }
 
-SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_SERVICE_${PN} = " document-server.service"
+# SYSTEMD_AUTO_ENABLE = "disable"
+SYSTEMD_SERVICE:${PN} = " document-server.service"
 
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
     python3 \
 "
 

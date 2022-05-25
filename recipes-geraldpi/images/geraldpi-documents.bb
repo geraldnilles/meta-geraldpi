@@ -4,7 +4,7 @@ include recipes-geraldpi/images/geraldpi-image.bb
 
 
 # Include modules in rootfs
-IMAGE_INSTALL_append += " \
+IMAGE_INSTALL:append = " \
 	document-server \
 	password-store \
 	scanner-scripts \

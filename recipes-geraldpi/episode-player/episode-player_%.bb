@@ -5,8 +5,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 inherit systemd
 
 SRC_URI = " \
-    git://github.com/geraldnilles/Chromecast-Episode-Player.git;branch=main \
-    file://no_venv.patch \
+    git://github.com/geraldnilles/Chromecast-Episode-Player.git;branch=main;protocol=https \
 "
 
 # Use this if you want to use a specific commit
@@ -34,17 +33,17 @@ do_install() {
 	ln -s ${video_library} ${D}${webapp_dir}/library
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
 	${systemd_unitdir}/* \
 	${webapp_dir}/* \
 "
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
 	python3 \
 	python3-flask \
 	python3-pychromecast \
 "
 
-SYSTEMD_SERVICE_${PN} = " chromecastEpisodes_webserver.service "
+SYSTEMD_SERVICE:${PN} = " chromecastEpisodes_webserver.service "
 
 

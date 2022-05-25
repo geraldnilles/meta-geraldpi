@@ -4,13 +4,13 @@ include recipes-geraldpi/images/geraldpi-image.bb
 
 
 # Include modules in rootfs
-IMAGE_INSTALL_append += " \
+IMAGE_INSTALL:append = " \
 	aircast \
 	dog-camera \
 	cputweaks \
 "
 
-IMAGE_INSTALL_remove += " \
+IMAGE_INSTALL:remove = " \
 	wpa-supplicant \
 "
 

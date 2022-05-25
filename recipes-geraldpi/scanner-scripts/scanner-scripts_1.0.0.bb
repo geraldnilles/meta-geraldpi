@@ -19,7 +19,7 @@ do_install() {
 
 }
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
 	utsushi \
 	tesseract \
 	ghostscript \

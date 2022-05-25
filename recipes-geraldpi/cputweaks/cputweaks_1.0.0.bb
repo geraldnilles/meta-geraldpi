@@ -20,8 +20,10 @@ do_install() {
         install -m 0755 ${WORKDIR}/cputweaks ${D}${bindir}
 }
 
-SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_SERVICE_${PN} = " cputweaks.service"
+
+# SYSTEMD_AUTO_ENABLE = "disable"
+
+SYSTEMD_SERVICE:${PN} = " cputweaks.service"
 
 
 

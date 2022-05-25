@@ -8,13 +8,13 @@ include recipes-geraldpi/images/geraldpi-image.bb
 
 
 # Include modules in rootfs
-IMAGE_INSTALL_append += " \
+IMAGE_INSTALL:append = " \
 	episode-player \
 	todo-list \
 "
 
 # No need to enable Wifi since this will be hardwired
-IMAGE_INSTALL_remove += " \
+IMAGE_INSTALL:remove = " \
 	wpa-supplicant \
 "
 

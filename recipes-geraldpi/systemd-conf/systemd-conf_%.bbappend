@@ -1,6 +1,6 @@
 
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
     file://eth.network \
@@ -9,13 +9,13 @@ SRC_URI += " \
 "
 
 # Add these 2 .network files into the final package
-FILES_${PN} += " \
+FILES:${PN} += " \
 	${sysconfdir}/systemd/network/*.network \
 	${systemd_unitdir}/journald.conf.d/00-${PN}.conf \
 "
 
 # Install these files into the /etc folder
-do_install_append() {
+do_install:append() {
     install -d ${D}${sysconfdir}/systemd/network
     install -m 0644 ${WORKDIR}/eth.network ${D}${sysconfdir}/systemd/network
     install -m 0644 ${WORKDIR}/wifi.network ${D}${sysconfdir}/systemd/network

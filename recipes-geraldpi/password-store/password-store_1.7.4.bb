@@ -26,7 +26,7 @@ do_install () {
     ln -s /media/gnupg ${D}/home/root/.gnupg
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
 	/usr/share/bash-completion \
 	/usr/share/bash-completion/completions \
 	/usr/share/bash-completion/completions/pass \
@@ -35,7 +35,7 @@ FILES_${PN} += " \
 	/home/root \
 "
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
 	gnupg \
 	tree \
 	git \

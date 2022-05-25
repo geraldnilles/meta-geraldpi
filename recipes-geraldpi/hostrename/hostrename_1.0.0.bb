@@ -22,8 +22,7 @@ do_install() {
         install -m 0755 ${WORKDIR}/hostbasename ${D}${bindir}
 }
 
-SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_SERVICE_${PN} = " hostrename.service"
+SYSTEMD_SERVICE:${PN} = " hostrename.service"
 
 
 

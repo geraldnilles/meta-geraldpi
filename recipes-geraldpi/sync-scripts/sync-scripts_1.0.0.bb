@@ -24,7 +24,7 @@ do_install() {
 }
 
 # SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_SERVICE_${PN} = " sync-scripts.service "
+SYSTEMD_SERVICE:${PN} = " sync-scripts.service "
 
 
 

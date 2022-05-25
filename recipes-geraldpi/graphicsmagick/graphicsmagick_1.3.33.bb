@@ -14,7 +14,7 @@ S = "${WORKDIR}/GraphicsMagick-${PV}"
 
 inherit autotools 
 
-FILES_${PN} += " ${datadir}/GraphicsMagick-1.3.33/config ${libdir}/GraphicsMagick-1.3.33/config "
+FILES:${PN} += " ${datadir}/GraphicsMagick-1.3.33/config ${libdir}/GraphicsMagick-1.3.33/config "
 
 SYSROOT_DIRS += " ${bindir} "
 

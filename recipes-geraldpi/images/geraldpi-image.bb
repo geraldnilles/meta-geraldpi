@@ -4,7 +4,7 @@ include recipes-core/images/core-image-minimal.bb
 
 
 # Include these packages in rootfs
-IMAGE_INSTALL_append = " \
+IMAGE_INSTALL:append = " \
 	wpa-supplicant \
 	linux-firmware-bcm43430 \
 	linux-firmware-rpidistro-bcm43430 \

@@ -6,7 +6,7 @@ inherit systemd
 
 SRC_URI = " \
     file://aircast.service \
-    git://github.com/philippe44/AirConnect.git;rev=14ecfa56f0e20b4a9e2615761ef34f7e92bc2128 \
+    git://github.com/philippe44/AirConnect.git;rev=14ecfa56f0e20b4a9e2615761ef34f7e92bc2128;branch=master;protocol=https \
 "
 
 S = "${WORKDIR}/git"
@@ -23,8 +23,8 @@ do_install() {
 
 
 SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_SERVICE_${PN} = " aircast.service "
+SYSTEMD_SERVICE:${PN} = " aircast.service "
 
 # Using the pre-compiled binary in the git repo so this QA step needs to be skipped
-INSANE_SKIP_${PN}_append = " already-stripped "
+INSANE_SKIP:${PN}:append = " already-stripped "
 
