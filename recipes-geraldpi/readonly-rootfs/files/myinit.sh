@@ -41,6 +41,11 @@ mount /dev/mmcblk0p1 /boot
 if [[ -f /boot/readonly ]]
 then
 	# Read-Only Mode - any changes will not persist when the device reboots
+
+	# Unmount and Remount wtih RO mode
+	sync
+	umount /mnt/nvol_part
+	mount -o ro /dev/mmcblk0p3 /mnt/nvol_part
 	LOWERDIR=/mnt/nvol_part/upper:/mnt/squash_part
 	UPPERDIR=/mnt/vol_part/upper
 	WORKDIR=/mnt/vol_part/work
