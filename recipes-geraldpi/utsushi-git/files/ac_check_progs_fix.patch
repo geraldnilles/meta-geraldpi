@@ -2,15 +2,6 @@ diff --git a/configure.ac b/configure.ac
 index b8401e0..0c05839 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -185,7 +185,7 @@ AC_DEFINE([MAGICK_CONVERT],
-
- dnl  checks for programs, modules and libraries
-
--AM_INIT_AUTOMAKE([1.11.2 gnu tar-ustar -Wall -Werror std-options nostdinc subdir-objects])
-+AM_INIT_AUTOMAKE([1.11.2 gnu tar-ustar -Wall std-options nostdinc subdir-objects])
- AM_MAINTAINER_MODE([enable])
- m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
-
 @@ -311,20 +311,20 @@ AM_CONDITIONAL([have_libmagick_pp], [test x != "x$LIBMAGICK_PP_LIBS"])
  AS_IF([test xno != "x$with_magick"],
     [AS_CASE("x$with_magick",
