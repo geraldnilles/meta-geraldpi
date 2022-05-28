@@ -38,7 +38,6 @@ DEPENDS += " \
 	boost \
 	libusb1 \
 	libtool \
-	libtool-native \
 	libxslt-native \
 	autoconf-archive-native \
 	graphicsmagick \
@@ -47,6 +46,8 @@ DEPENDS += " \
 "
 
 FILES:${PN} += " \
+	${datadir} \
+	${libdir} \
 "
 
 EXTRA_OECONF:append = " \
@@ -56,4 +57,7 @@ EXTRA_OECONF:append = " \
     --with-tiff \
 "
 
+# Generated library files do nto contains a version number so Yocto gets mad.
+# This tells the packacing script to skip that check
+INSANE_SKIP:${PN} = "dev-so"
 
