@@ -21,11 +21,12 @@ inherit gettext
 inherit autotools
 
 S = "${WORKDIR}/git"
-B = "${WORKDIR}/git"
 
 do_configure:prepend() {
+	olddir=`pwd`
 	cd ${S}
 	./bootstrap --force
+	cd $olddir
 }
 
 RDEPENDS:${PN} += " \
