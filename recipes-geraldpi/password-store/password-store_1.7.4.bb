@@ -1,6 +1,6 @@
 DESCRIPTION = "Pass: The Standard Unix Password Manager"
 HOMEPAGE = "https://www.passwordstore.org/"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 SECTION = "console/utils"
 LIC_FILES_CHKSUM = "file://COPYING;md5=573db2df927d27d30e3f59d328774d72"
 

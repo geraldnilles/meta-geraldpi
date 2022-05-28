@@ -1,0 +1,29 @@
+diff --git a/configure.ac b/configure.ac
+index b8401e0..37b2685 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -311,20 +311,20 @@ AM_CONDITIONAL([have_libmagick_pp], [test x != "x$LIBMAGICK_PP_LIBS"])
+ AS_IF([test xno != "x$with_magick"],
+    [AS_CASE("x$with_magick",
+      [xGraphicsMagick],
+-       [AC_CHECK_PROGS([MAGICK_CONVERT], [gm])
++       [AC_CHECK_PROGS([MAGICK_CONVERT], [gm],[$MAGICK_CONVERT],[$PATH$PATH_SEPARATOR$PKG_CONFIG_SYSROOT_DIR/usr/bin$PATH_SEPARATOR])
+         AS_IF([test xgm != x$MAGICK_CONVERT],
+           [AC_MSG_ERROR([$with_magick requested but not found])])
+         AC_DEFINE([HAVE_GRAPHICS_MAGICK], [1])
+         MAGICK_CONVERT="gm convert"
+        ],
+      [xImageMagick],
+-       [AC_CHECK_PROGS([MAGICK_CONVERT], [convert])
++       [AC_CHECK_PROGS([MAGICK_CONVERT], [convert],[$MAGICK_CONVERT],[$PATH$PATH_SEPARATOR$PKG_CONFIG_SYSROOT_DIR/usr/bin$PATH_SEPARATOR])
+         AS_IF([test xconvert != x$MAGICK_CONVERT],
+           [AC_MSG_ERROR([$with_magick requested but not found])])
+         AC_DEFINE([HAVE_IMAGE_MAGICK], [1])
+        ],
+      [xyes|xcheck],
+-       [AC_CHECK_PROGS([MAGICK_CONVERT], [gm convert])
++       [AC_CHECK_PROGS([MAGICK_CONVERT], [gm convert],[$MAGICK_CONVERT],[$PATH$PATH_SEPARATOR$PKG_CONFIG_SYSROOT_DIR/usr/bin$PATH_SEPARATOR])
+         AS_CASE(x$MAGICK_CONVERT,
+           [xgm],
+             [AC_DEFINE([HAVE_GRAPHICS_MAGICK], [1])
+

@@ -1,6 +1,6 @@
 DESCRIPTION = "Utsushi: Image Scan Utility for Epson Scanners"
 HOMEPAGE = "https://gitlab.com/utsushi"
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 SECTION = "libs/multimedia"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
@@ -27,6 +27,17 @@ DEPENDS += " \
 	graphicsmagick \
 	libjpeg-turbo \
 	tiff \
+"
+
+# Add the libusb include folder to the include path
+TARGET_CXXFLAGS += "\
+	-I${STAGING_INCDIR}/libusb-1.0 \
+"
+
+# Add the libusb include folder to the include path
+TARGET_LDFLAGS += "\
+	-lusb-1.0 \
+	-ludev \
 "
 
 inherit autotools

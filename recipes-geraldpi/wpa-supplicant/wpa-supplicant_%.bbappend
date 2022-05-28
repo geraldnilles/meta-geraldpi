@@ -20,6 +20,7 @@ do_install:append() {
     /usr/bin/wpa_passphrase ${WIFI_SSID} ${WIFI_PASSWORD} >> ${D}${sysconfdir}/wpa_supplicant/wpa_supplicant-wlan0.conf
 
     # Add Wifi config to the SystemD NetworkD
+    install -d ${D}${sysconfdir}/systemd/network
     install -m 0644 ${WORKDIR}/wifi.network ${D}${sysconfdir}/systemd/network/
 }
 
