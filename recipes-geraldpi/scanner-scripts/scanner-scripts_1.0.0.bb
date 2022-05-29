@@ -20,7 +20,7 @@ do_install() {
 }
 
 RDEPENDS:${PN} = " \
-	utsushi \
+	utsushi-git \
 	tesseract \
 	ghostscript \
 	git \
