@@ -14,10 +14,6 @@ mkdir /mnt/nvol_part
 mkdir /mnt/vol_part
 mkdir /mnt/newroot
 
-# Mount the base OS Squash Partition 
-# TODO Copy SquashFS to RAM before mounting
-# OR Make a bootloader partition the mounts the Squashfs from boot parition?
-mount /dev/mmcblk0p2 /mnt/squash_part
 
 # Setup a non-volitile overlay partition
 mount /dev/mmcblk0p3 /mnt/nvol_part
@@ -32,6 +28,18 @@ mkdir -p /mnt/vol_part/work
 
 # Mount the Boot Partition to check for a readonly file
 mount /dev/mmcblk0p1 /boot
+
+# Mount the base OS Squash Partition 
+if [[ -f /boot/SYSTEM.img ]]
+then
+	# Copy SquashFS Image to RAM before mounting
+	cp /boot/SYSTEM.img /mnt/vol_part/
+	sync
+	mount /mnt/vol_part/SYSTEM.img /mnt/squash_part
+else
+	# Otherwise, mount the SD partition image
+	mount /dev/mmcblk0p2 /mnt/squash_part
+fi
 
 # Adjust the overlay directories depending on the mount type...
 # THis is hardcoded for now, later, i will look for a boot flag or some other indicator

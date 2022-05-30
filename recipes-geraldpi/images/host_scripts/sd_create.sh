@@ -44,7 +44,7 @@ echo n # Add a new partition
 echo "p"  # Partition Type (primary)
 echo " "  # Partition Number (1)
 echo " "  # First sector (Accept default: 1)
-echo "+200M"  # Last sector (200MB
+echo "+1G"  # 1Gig boot partition
 echo "t"  # Set Partition Type)
 echo "c"  # Set W95 LBA TYpe
 
@@ -105,6 +105,8 @@ do
 
 done
 
+cp $2 $MOUNTPOINT/SYSTEM.img
+
 sync
 
 umount $MOUNTPOINT
@@ -113,6 +115,7 @@ rm -r $MOUNTPOINT
 
 echo "Copying the Root Parition"
 dd if=$2 of=$12 bs=1M
+
 
 sync
 
