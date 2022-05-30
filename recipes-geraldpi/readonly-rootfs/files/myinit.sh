@@ -8,9 +8,6 @@ mount -t sysfs sysfs /sys
 mount -t tmpfs inittemp /mnt
 cd /mnt
 
-# Enable the OverlayFS
-modprobe overlay
-
 # Generate new Mountpoint directories
 mkdir /mnt/squash_part
 mkdir /mnt/nvol_part
