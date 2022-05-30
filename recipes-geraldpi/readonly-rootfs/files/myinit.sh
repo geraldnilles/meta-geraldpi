@@ -3,6 +3,7 @@
 # Mount the required system folders
 mount -t proc proc /proc
 mount -t sysfs sysfs /sys
+mount -t devtmpfs devtmpfs /dev
 
 # Generate a tmpfs to hold all the new mountpoints
 mount -t tmpfs inittemp /mnt
@@ -28,18 +29,9 @@ mkdir -p /mnt/vol_part/work
 
 # Mount the Boot Partition to check for a readonly file
 mount /dev/mmcblk0p1 /boot
-
-# Mount the base OS Squash Partition 
-if [[ -f /boot/SYSTEM.img ]]
-then
-	# Copy SquashFS Image to RAM before mounting
-	cp /boot/SYSTEM.img /mnt/vol_part/
-	sync
-	mount /mnt/vol_part/SYSTEM.img /mnt/squash_part
-else
-	# Otherwise, mount the SD partition image
-	mount /dev/mmcblk0p2 /mnt/squash_part
-fi
+cp /boot/SYSTEM.img /mnt/vol_part/
+sync
+mount /mnt/vol_part/SYSTEM.img /mnt/squash_part
 
 # Adjust the overlay directories depending on the mount type...
 # THis is hardcoded for now, later, i will look for a boot flag or some other indicator
@@ -63,7 +55,6 @@ else
 	
 fi
 
-# Unmount the boot partition since we no longer need it
 umount /boot
 
 mount -t overlay -o lowerdir=$LOWERDIR,upperdir=$UPPERDIR,workdir=$WORKDIR overlayfs-root /mnt/newroot
@@ -72,7 +63,7 @@ mount -t overlay -o lowerdir=$LOWERDIR,upperdir=$UPPERDIR,workdir=$WORKDIR overl
 cd /mnt/newroot
 
 # Get the Hostname from the Read-only Rootfs
-HOSTNAME=$( cat /etc/hostname )
+HOSTNAME=$( cat /mnt/squash_part/etc/hostname )
 
 # Get the serial number of the SoC
 SERIAL=$( cat /sys/firmware/devicetree/base/serial-number )
