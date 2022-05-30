@@ -17,7 +17,7 @@ mkdir /mnt/newroot
 
 
 # Setup a non-volitile overlay partition
-mount /dev/mmcblk0p3 /mnt/nvol_part
+mount /dev/mmcblk0p2 /mnt/nvol_part
 mkdir -p /mnt/nvol_part/upper
 mkdir -p /mnt/nvol_part/work
 
@@ -42,7 +42,7 @@ then
 	# Unmount and Remount wtih RO mode
 	sync
 	umount /mnt/nvol_part
-	mount -o ro /dev/mmcblk0p3 /mnt/nvol_part
+	mount -o ro /dev/mmcblk0p2 /mnt/nvol_part
 	LOWERDIR=/mnt/nvol_part/upper:/mnt/squash_part
 	UPPERDIR=/mnt/vol_part/upper
 	WORKDIR=/mnt/vol_part/work

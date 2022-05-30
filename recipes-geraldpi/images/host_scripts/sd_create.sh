@@ -50,12 +50,6 @@ echo "c"  # Set W95 LBA TYpe
 
 echo n # Add a new partition
 echo "p"  # Partition Type (primary)
-echo " "  # Partition Number (2)
-echo " "  # First sector (Accept default: 1)
-echo "+2G"  # Last sector (200MB
-
-echo n # Add a new partition
-echo "p"  # Partition Type (primary)
 echo " "  # Partition Number (3)
 echo " "  # First sector (Accept default: 1)
 echo " "  # Last sector (200MB
@@ -68,7 +62,7 @@ echo w # Write changes
 mkfs.vfat -n boot "$11"
 
 # Format the nonvolatile partition
-mkfs.ext4 -L nvol "$13"
+mkfs.ext4 -L nvol "$12"
 
 else
 
@@ -107,14 +101,14 @@ done
 
 cp $2 $MOUNTPOINT/SYSTEM.img
 
+cp Image-initramfs-raspberrypi4-64.bin $MOUNTPOINT/kernel8.img
+
 sync
 
 umount $MOUNTPOINT
 
 rm -r $MOUNTPOINT
 
-echo "Copying the Root Parition"
-dd if=$2 of=$12 bs=1M
 
 
 sync
