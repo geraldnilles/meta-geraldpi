@@ -5,6 +5,8 @@ mount -t proc proc /proc
 mount -t sysfs sysfs /sys
 mount -t devtmpfs devtmpfs /dev
 
+sleep 5
+
 # Generate a tmpfs to hold all the new mountpoints
 mount -t tmpfs inittemp /mnt
 cd /mnt

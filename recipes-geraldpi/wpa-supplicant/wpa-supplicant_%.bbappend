@@ -25,7 +25,7 @@ do_install:append() {
 }
 
 # Enable the wpa_supplicant at boot
-# SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE:${PN}:append = " wpa_supplicant@wlan0.service"
 
 
