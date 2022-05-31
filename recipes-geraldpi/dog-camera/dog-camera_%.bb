@@ -6,7 +6,6 @@ inherit systemd
 
 SRC_URI = " \
     git://github.com/geraldnilles/DogCamera.git;branch=main;protocol=https \
-    npm://registry.npmjs.org/;package=express;version=4.18.1 \
 "
 
 # Use this if you want to use a specific commit
@@ -18,13 +17,12 @@ PV = "1.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-webapp_dir = "/opt/DogCamera"
+do_npmfetch() {
 
-
-do_fetch() {
     # changing the home directory to the working directory, the .npmrc will be created in this directory
     export HOME=${WORKDIR}
-
+    echo $PATH
+    
     cd ${WORKDIR}
     mkdir -p node_dir
     cd node_dir
@@ -39,10 +37,13 @@ do_fetch() {
     npm --arch=${TARGET_ARCH} --verbose install express pug
 }
 
-#do_configure() {
-#	curl https://google.com
-#}
+addtask npmfetch after do_fetch before do_install
+do_npmfetch[network] = "1"
 
+# Wait for sysroot to populate so NPM is availabe
+do_fetch[deptask] += " do_populate_sysroot "
+
+webapp_dir = "/opt/DogCamera"
 do_install() {
         install -d ${D}/${systemd_unitdir}/system
         install -m 0644 ${S}/systemd/* ${D}/${systemd_unitdir}/system
@@ -55,11 +56,8 @@ do_install() {
 	cp -R --no-dereference --preserve=mode,links -v ${S}/views ${D}${webapp_dir}
 	install -m 0755 ${S}/app.js ${D}${webapp_dir}
 
-
 	cp -R --no-dereference --preserve=mode,links -v ${WORKDIR}/node_dir/* ${D}${webapp_dir}
-
 }
-
 
 FILES:${PN} += " \
 	${systemd_unitdir}/* \
@@ -77,5 +75,4 @@ RDEPENDS:${PN} += " \
 "
 
 SYSTEMD_SERVICE:${PN} = " scam_ui.service "
-
 
