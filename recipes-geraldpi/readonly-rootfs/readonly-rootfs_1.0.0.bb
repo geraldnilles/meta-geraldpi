@@ -5,7 +5,6 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = " \
     file://myinit.sh \
-    file://hostbasename \
 "
 
 S = "${WORKDIR}"
@@ -14,8 +13,6 @@ do_install() {
     install -d ${D}/${base_sbindir}
     install -m 0755 ${S}/myinit.sh ${D}/${base_sbindir}
 
-    install -d ${D}/${bindir}
-    install -m 0755 ${S}/hostbasename ${D}/${bindir}
 }
 
 # THis recipe only moves the myinit file into the sbin directory, it does not
