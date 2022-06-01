@@ -70,4 +70,9 @@ my_scp Image-initramfs-raspberrypi4-64.bin root@$1:/boot/kernel8.img
 my_ssh root@$1 sync
 my_ssh root@$1 umount /boot
 
+echo "Update complete.  Restarting in 10s..."
+sleep 10
+my_ssh root@$1 /sbin/reboot
+
+
 
