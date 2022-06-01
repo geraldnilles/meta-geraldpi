@@ -14,7 +14,6 @@ IMAGE_INSTALL:append = " \
 	bash \
 	bash-completion \
 	discover \
-	readonly-rootfs \
 "
 
 IMAGE_FSTYPES = " wic squashfs " 
