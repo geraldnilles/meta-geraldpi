@@ -17,27 +17,27 @@ S = "${WORKDIR}/git"
 webapp_dir = "/opt/LocalNewsDVR"
 
 do_install() {
-        # install -d ${D}/${systemd_unitdir}/system
-        # install -m 0644 ${S}/systemd/* ${D}/${systemd_unitdir}/system
+        install -d ${D}/${systemd_unitdir}/system
+        install -m 0644 ${S}/systemd/* ${D}/${systemd_unitdir}/system
 
         install -d ${D}${webapp_dir}
 	cp -R --no-dereference --preserve=mode,links -v ${S}/localnews ${D}${webapp_dir}
-
 	cp -R --no-dereference --preserve=mode,links -v ${S}/scripts ${D}${webapp_dir}
+	cp -R --no-dereference --preserve=mode,links -v ${S}/flask_cors ${D}${webapp_dir}
 	install -m 0755 ${S}/run.sh ${D}${webapp_dir}
-
 }
 
 FILES:${PN} += " \
 	${webapp_dir}/* \
+	${systemd_unitdir}/* \
 "
-# ${systemd_unitdir}/* 
 
 RDEPENDS:${PN} += " \
 	python3 \
 	python3-flask \
 	python3-pychromecast \
 	ffmpeg \
+	cputweaks \
 "
 
 # SYSTEMD_SERVICE:${PN} = " chromecastEpisodes_webserver.service "
