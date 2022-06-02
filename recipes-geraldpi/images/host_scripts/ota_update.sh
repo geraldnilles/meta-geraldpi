@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 
 # Customized SSH and SCP commands that do not track or check the host key
+
+# Use a temporary Known Host file to prevent getting spammed by SSH mesages
+KHOSTFILE=/tmp/khosts
+rm $KHOSTFILE
+
 function my_ssh() {
-	ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $@
+	ssh -o "UserKnownHostsFile=$KHOSTFILE" -o "StrictHostKeyChecking=no" $@
 }
 
 function my_scp() {
-	scp -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $@
+	scp -o "UserKnownHostsFile=$KHOSTFILE" -o "StrictHostKeyChecking=no" $@
 }
 
 if [ -z $1 ]

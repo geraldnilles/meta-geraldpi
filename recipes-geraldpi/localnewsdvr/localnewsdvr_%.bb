@@ -40,6 +40,7 @@ RDEPENDS:${PN} += " \
 	cputweaks \
 "
 
-# SYSTEMD_SERVICE:${PN} = " chromecastEpisodes_webserver.service "
+SYSTEMD_SERVICE:${PN} = " localnews_webserver.service "
 
+INSANE_SKIP:${PN}:append = " already-stripped "
 

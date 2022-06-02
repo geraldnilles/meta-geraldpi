@@ -19,11 +19,11 @@ IMAGE_INSTALL:remove = " \
 	wpa-supplicant \
 "
 
-
 # Add an fstab entry to automount the USB drive
 add_usb_automount() {
 
 	echo "LABEL=webapps	/media	ext4	defaults,nofail	0	0" >> ${IMAGE_ROOTFS}/etc/fstab
+	echo "LABEL=scratch	/mnt	ext4	defaults,nofail	0	0" >> ${IMAGE_ROOTFS}/etc/fstab
 
 }
 
