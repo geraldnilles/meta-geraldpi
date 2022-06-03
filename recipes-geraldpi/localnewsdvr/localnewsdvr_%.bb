@@ -40,7 +40,7 @@ RDEPENDS:${PN} += " \
 	cputweaks \
 "
 
-SYSTEMD_SERVICE:${PN} = " localnews_webserver.service "
+SYSTEMD_SERVICE:${PN} = " localnews_webserver.service localnews_capture.timer "
 
 INSANE_SKIP:${PN}:append = " already-stripped "
 
