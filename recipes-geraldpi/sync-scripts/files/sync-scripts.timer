@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic Sync docs between all geraldpi-document instances
+
+[Timer]
+OnBootSec=15min
+OnUnitActiveSec=60min
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target
+

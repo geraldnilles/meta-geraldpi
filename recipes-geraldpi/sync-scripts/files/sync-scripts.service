@@ -6,6 +6,3 @@ Description=Sync files between all similar instances on the network
 Type=oneshot
 ExecStart=/usr/bin/sync_all
 
-[Install]
-WantedBy=multi-user.target
-

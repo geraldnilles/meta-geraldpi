@@ -23,8 +23,7 @@ do_install() {
         install -m 0755 ${WORKDIR}/sync_* ${D}${bindir}
 }
 
-# SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_SERVICE:${PN} = " sync-scripts.service "
+SYSTEMD_SERVICE:${PN} = " sync-scripts.timer "
 
 
 
