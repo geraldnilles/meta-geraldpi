@@ -7,9 +7,8 @@ inherit systemd
 SRC_URI = " \
     file://sync_all \
     file://sync_docs \
-    file://sync_photos \
     file://sync-scripts.service \
-    file://sync_videos \
+    file://sync-scripts.timer \
     file://sync_passwords \
 "
 
@@ -17,7 +16,8 @@ S = "${WORKDIR}"
 
 do_install() {
         install -d ${D}/${systemd_unitdir}/system
-        install -m 0644 ${WORKDIR}/*.service ${D}${systemd_unitdir}/system
+        install -m 0644 ${WORKDIR}/sync-scripts.service ${D}${systemd_unitdir}/system
+        install -m 0644 ${WORKDIR}/sync-scripts.timer ${D}${systemd_unitdir}/system
 
         install -d ${D}/${bindir}
         install -m 0755 ${WORKDIR}/sync_* ${D}${bindir}
@@ -26,4 +26,7 @@ do_install() {
 SYSTEMD_SERVICE:${PN} = " sync-scripts.timer "
 
 
+FILES:${PN} += " \
+	${systemd_unitdir}/* \
+"
 

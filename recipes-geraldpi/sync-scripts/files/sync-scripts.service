@@ -5,4 +5,5 @@ Description=Sync files between all similar instances on the network
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/sync_all
+Environment="HOME=/home/root"
 

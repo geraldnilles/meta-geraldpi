@@ -60,7 +60,6 @@ IV. Build one of the images
 V. TODOs
 =========
 
-[ ] Only enable Wifi for devices i plan on using wifi for... perhaps add a switch in the "image" recipe to delete the wpa_supplicant file?
-[ ] Todo Flask App
-[ ] Epsidoes Flask App
-[ ] Live TV Flask App
+[ ] Add autocomplete to the `scan` function
+[ ] Switch Dog Camera to a FLask app
+
