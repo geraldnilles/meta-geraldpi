@@ -23,8 +23,11 @@ do_install() {
         install -d ${D}/${systemd_unitdir}/system
         install -m 0644 ${S}/systemd/* ${D}/${systemd_unitdir}/system
 
+        install -d ${D}${libdir}/python3.10/site-packages
+	install -m 0755 ${S}/castcontroller.py ${D}${libdir}/python3.10/site-packages/
+
+
         install -d ${D}${webapp_dir}
-	install -m 0755 ${S}/controller.py ${D}${webapp_dir}
 	install -m 0755 ${S}/test.py ${D}${webapp_dir}
 
         install -d ${D}${bindir}
@@ -36,6 +39,7 @@ FILES:${PN} += " \
 	${systemd_unitdir}/* \
 	${webapp_dir}/* \
 	${bindir}/* \
+	${libdir}/* \
 "
 
 RDEPENDS:${PN} += " \
