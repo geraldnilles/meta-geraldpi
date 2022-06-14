@@ -6,7 +6,6 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = " \
     file://ssh.service \
     file://find_peers \
-    file://find_chromecasts \
     file://hostbasename \
 "
 
@@ -15,7 +14,6 @@ S = "${WORKDIR}"
 do_install() {
         install -d ${D}/${bindir}
         install -m 0755 ${WORKDIR}/find_peers ${D}${bindir}
-        install -m 0755 ${WORKDIR}/find_chromecasts ${D}${bindir}
         install -m 0755 ${WORKDIR}/hostbasename ${D}${bindir}
 
         install -d ${D}${sysconfdir}/avahi/services
