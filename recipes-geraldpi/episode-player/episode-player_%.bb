@@ -41,7 +41,7 @@ FILES:${PN} += " \
 RDEPENDS:${PN} += " \
 	python3 \
 	python3-flask \
-	python3-pychromecast \
+	chromecast-controller \
 "
 
 SYSTEMD_SERVICE:${PN} = " chromecastEpisodes_webserver.service "

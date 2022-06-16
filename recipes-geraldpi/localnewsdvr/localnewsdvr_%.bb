@@ -35,9 +35,9 @@ FILES:${PN} += " \
 RDEPENDS:${PN} += " \
 	python3 \
 	python3-flask \
-	python3-pychromecast \
 	ffmpeg \
 	cputweaks \
+	chromecast-controller \
 "
 
 SYSTEMD_SERVICE:${PN} = " localnews_webserver.service "

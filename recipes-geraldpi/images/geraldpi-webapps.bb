@@ -10,7 +10,6 @@ include recipes-geraldpi/images/geraldpi-image.bb
 # Include modules in rootfs
 IMAGE_INSTALL:append = " \
 	episode-player \
-	chromecast-controller \
 	todo-list \
 	localnewsdvr \
 "
