@@ -48,6 +48,6 @@ RDEPENDS:${PN} += " \
 	python3-systemd \
 "
 
-SYSTEMD_SERVICE:${PN} = " chromecast_controller.socket "
+SYSTEMD_SERVICE:${PN} = " chromecast_controller.socket find_chromecasts.timer "
 
 

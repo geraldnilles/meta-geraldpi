@@ -44,6 +44,6 @@ RDEPENDS:${PN} += " \
 	chromecast-controller \
 "
 
-SYSTEMD_SERVICE:${PN} = " chromecastEpisodes_webserver.service "
+SYSTEMD_SERVICE:${PN} = " episodes_webserver.service "
 
 
