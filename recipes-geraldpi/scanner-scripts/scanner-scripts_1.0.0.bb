@@ -7,6 +7,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = " \
     file://scan \
     file://merge \
+    file://completion.bash \
 "
 
 S = "${WORKDIR}"
@@ -17,12 +18,16 @@ do_install() {
         install -m 0755 ${WORKDIR}/scan ${D}${bindir}
         install -m 0755 ${WORKDIR}/merge ${D}${bindir}
 
+        install -d ${D}/${datadir}/bash-completion/completions
+        install -m 0755 ${WORKDIR}/completion.bash ${D}/${datadir}/bash-completion/completions/scan
+
 }
 
 RDEPENDS:${PN} = " \
 	utsushi-git \
 	tesseract \
 	ghostscript \
+	bash-completion \
 	git \
 "
 
