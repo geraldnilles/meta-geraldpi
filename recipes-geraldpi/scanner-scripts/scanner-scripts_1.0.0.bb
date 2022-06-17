@@ -23,6 +23,10 @@ do_install() {
 
 }
 
+FILES:${PN} += " \
+       ${datadir}/* \
+"
+
 RDEPENDS:${PN} = " \
 	utsushi-git \
 	tesseract \
