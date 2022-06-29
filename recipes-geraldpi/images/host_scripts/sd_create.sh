@@ -7,7 +7,7 @@ then
 	exit 128
 fi
 
-cd ../../../../build/tmp/deploy/images/raspberrypi4-64/
+cd ../../../../poky/build/tmp/deploy/images/raspberrypi4-64/
 
 if [ -z $2 ]
 then
