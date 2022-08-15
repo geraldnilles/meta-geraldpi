@@ -4,7 +4,7 @@ After=systemd-networkd.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/aircast
+ExecStart=/usr/bin/aircast -d all=warn
 Restart=always
 RestartSec=10
 

@@ -25,6 +25,7 @@ fi
 # Scan the Document using greyscale input and use Tesseract to read the english text
 /usr/libexec/utsushi/utsushi-scan-cli \
 	--image-type Grayscale \
+	--scan-area="Letter/Portrait" \
 	--resolution 300 | \
 	tesseract stdin \
 	temp -l eng \
