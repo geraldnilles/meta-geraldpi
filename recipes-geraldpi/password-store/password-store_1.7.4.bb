@@ -16,8 +16,8 @@ do_install () {
     oe_runmake install 'DESTDIR=${D}'
 
     # I dont need th zfs stuff
-
-    rm -r ${D}/usr/share/zsh
+    #
+    #rm -r ${D}/usr/share/zsh
 
     install -d ${D}${sysconfdir}/profile.d
     install -d ${D}/home/root
