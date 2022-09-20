@@ -18,6 +18,7 @@ do_install () {
     # I dont need th zfs stuff
     #
     #rm -r ${D}/usr/share/zsh
+    #rm -r ${D}/usr/share/fish
 
     install -d ${D}${sysconfdir}/profile.d
     install -d ${D}/home/root
@@ -28,6 +29,7 @@ do_install () {
 
 FILES:${PN} += " \
 	/usr/share/bash-completion \
+	/usr \
 	/usr/share/bash-completion/completions \
 	/usr/share/bash-completion/completions/pass \
 	${sysconfdir}/profile.d/*.sh \
