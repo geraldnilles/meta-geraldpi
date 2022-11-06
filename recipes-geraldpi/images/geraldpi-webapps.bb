@@ -11,7 +11,6 @@ include recipes-geraldpi/images/geraldpi-image.bb
 IMAGE_INSTALL:append = " \
 	episode-player \
 	todo-list \
-	localnewsdvr \
 "
 
 # No need to enable Wifi since this will be hardwired
@@ -23,7 +22,6 @@ IMAGE_INSTALL:remove = " \
 add_usb_automount() {
 
 	echo "LABEL=webapps	/media	ext4	defaults,nofail	0	0" >> ${IMAGE_ROOTFS}/etc/fstab
-	echo "LABEL=scratch	/mnt	ext4	defaults,nofail	0	0" >> ${IMAGE_ROOTFS}/etc/fstab
 
 }
 
