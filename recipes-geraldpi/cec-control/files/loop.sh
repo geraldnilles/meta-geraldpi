@@ -2,8 +2,6 @@
 
 cd "$(dirname "$0")"
 
-. venv/bin/activate
-
 while true
 do
 	sleep 30
