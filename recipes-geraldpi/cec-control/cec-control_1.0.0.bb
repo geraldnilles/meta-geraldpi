@@ -6,11 +6,11 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = " \
     file://chromecast_status.py \
-    file://configure.sh
-    file://loop.sh
-    file://tv_off.sh
-    file://tv_on.sh
-    file://tv_status.sh
+    file://configure.sh \
+    file://loop.sh \
+    file://tv_off.sh \
+    file://tv_on.sh \
+    file://tv_status.sh \
 "
 
 S = "${WORKDIR}"
