@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
+cd "$(dirname "$0")"
 
 if [ -z $1 ]
 then
 	echo "Please provide a device name to format"
 	exit 128
 fi
-
-cd ../../../../poky/build/tmp/deploy/images/raspberrypi4-64/
 
 if [ -z $2 ]
 then
