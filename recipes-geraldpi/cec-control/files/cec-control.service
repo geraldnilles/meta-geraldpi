@@ -1,0 +1,11 @@
+[Unit]
+Description=HDMI CEC Control Loop
+
+[Service]
+Type=simple
+ExecStart=/opt/cec-control/loop.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
