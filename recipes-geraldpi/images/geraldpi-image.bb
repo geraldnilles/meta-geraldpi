@@ -20,4 +20,5 @@ IMAGE_FSTYPES = " wic squashfs "
 
 IMAGE_FEATURES += " ssh-server-dropbear "
 
-do_rootfs[depends] += " sd-flash:do_deploy "
+do_build[depends] += " sd-flash:do_deploy "
+
