@@ -13,7 +13,6 @@ SRC_URI = " \
     file://tv_on.sh \
     file://tv_status.sh \
     file://cec-control.service \
-    
 "
 
 S = "${WORKDIR}"
