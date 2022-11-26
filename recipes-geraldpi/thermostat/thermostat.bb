@@ -33,6 +33,7 @@ FILES:${PN} += " \
 RDEPENDS:${PN} += " \
 	python3 \
 	python3-flask \
+	python3-pandas \
 	bluez5 \
 "
 
