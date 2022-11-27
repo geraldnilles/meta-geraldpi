@@ -16,7 +16,7 @@ IMAGE_INSTALL:append = " \
 	discover \
 "
 
-IMAGE_FSTYPES = " wic squashfs " 
+IMAGE_FSTYPES = " squashfs " 
 
 IMAGE_FEATURES += " ssh-server-dropbear "
 
