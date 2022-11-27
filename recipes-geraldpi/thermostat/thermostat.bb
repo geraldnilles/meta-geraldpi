@@ -1,4 +1,4 @@
-DESCRIPTION = "A Python Flask Web app application for regulating temperature"
+DESCRIPTION = "An application for regulating temperature"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
@@ -6,6 +6,10 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = " \
     file://run.sh \
+    file://gpio.sh \
+    file://heat.sh \
+    file://scan.py \
+    file://test_client.py \
 "
 
 
@@ -22,7 +26,8 @@ do_install() {
         # install -m 0644 ${S}/systemd/* ${D}/${systemd_unitdir}/system
 
         install -d ${D}${webapp_dir}
-	install -m 0755 ${S}/run.sh ${D}${webapp_dir}
+	install -m 0755 ${S}/*.sh ${D}${webapp_dir}
+	install -m 0755 ${S}/*.py ${D}${webapp_dir}
 
 }
 

@@ -7,7 +7,7 @@ Roll Out Plan
 =============
 
 [X] Get BLE scanning working with pip as a proof of concept
-[ ] Write python recipes for bleak and its dependencies so that they are built in and not loaded at runtime
+[X] Write python recipes for bleak and its dependencies so that they are built in and not loaded at runtime
 
     - bleak
     - async-timeout
@@ -15,7 +15,7 @@ Roll Out Plan
 
 [ ] Systemd service for starting the script
 [ ] Write script for pulling and averaging most recent measurements from each room
-[ ] Write a script that toggles the GPIO
+[X] Write a script that toggles the GPIO
 
     - We can just use the sysfs nodes for driving the GPIOs
     - Relay 1 is GPIO 26. We can use this for heat 
