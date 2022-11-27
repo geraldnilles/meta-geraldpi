@@ -10,7 +10,7 @@ async def main():
     df = db[db["Temp"] > 50]
     rooms = db.Room.unique()
     for r in rooms:
-	# Grap the last 10 reading and average them
+	# Grap the last 5 reading and average them
         print(r,df[df["Room"] == r].tail(5)["Temp"].mean(),sep=";")
 
 asyncio.run(main())
