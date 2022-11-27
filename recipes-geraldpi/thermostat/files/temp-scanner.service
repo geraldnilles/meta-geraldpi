@@ -1,0 +1,11 @@
+[Unit]
+Description=Temp Scanner Service
+
+[Service]
+Type=simple
+ExecStart=/opt/thermostat/scan.py
+Restart=Always
+
+[Install]
+WantedBy=multi-user.target
+
