@@ -100,7 +100,7 @@ done
 
 cp $2 $MOUNTPOINT/SYSTEM.img
 
-cp Image-initramfs-raspberrypi4-64.bin $MOUNTPOINT/kernel8.img
+cp Image-initramfs-raspberrypi*.bin $MOUNTPOINT/kernel8.img
 
 sync
 
