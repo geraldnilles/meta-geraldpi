@@ -13,6 +13,9 @@ SRC_URI = " \
     file://max_temp.sh \
     file://min_temp.sh \
     file://room_average.py \
+    file://temp-scanner.service \
+    file://thermostat.service \
+    file://thermostat.timer \
 "
 
 
@@ -48,5 +51,4 @@ RDEPENDS:${PN} += " \
 "
 
 SYSTEMD_SERVICE:${PN} = " thermostat.timer temp-scanner.service "
-
 
