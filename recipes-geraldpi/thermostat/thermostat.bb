@@ -2,7 +2,7 @@ DESCRIPTION = "An application for regulating temperature"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-# inherit systemd
+inherit systemd
 
 SRC_URI = " \
     file://run.sh \
@@ -25,8 +25,9 @@ S = "${WORKDIR}"
 webapp_dir = "/opt/thermostat"
 
 do_install() {
-        # install -d ${D}/${systemd_unitdir}/system
-        # install -m 0644 ${S}/systemd/* ${D}/${systemd_unitdir}/system
+        install -d ${D}/${systemd_unitdir}/system
+        install -m 0644 ${S}/*.service ${D}/${systemd_unitdir}/system
+        install -m 0644 ${S}/*.timer ${D}/${systemd_unitdir}/system
 
         install -d ${D}${webapp_dir}
 	install -m 0755 ${S}/*.sh ${D}${webapp_dir}
@@ -36,6 +37,7 @@ do_install() {
 
 FILES:${PN} += " \
 	${webapp_dir}/* \
+	${systemd_unitdir}/* \
 "
 
 RDEPENDS:${PN} += " \
@@ -45,6 +47,6 @@ RDEPENDS:${PN} += " \
 	bluez5 \
 "
 
-# SYSTEMD_SERVICE:${PN} = " todolist_webserver.service "
+SYSTEMD_SERVICE:${PN} = " thermostat.timer temp-scanner.service "
 
 

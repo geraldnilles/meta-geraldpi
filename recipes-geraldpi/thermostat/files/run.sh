@@ -10,6 +10,8 @@ MIN_TEMP=68
 
 temp=$( ./min_temp.sh )
 
+echo Temp: $temp Set: $MIN_TEMP
+
 if [ $temp -lt $MIN_TEMP ]
 then
 	echo "Turning Heat On"

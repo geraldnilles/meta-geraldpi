@@ -1,5 +1,6 @@
 [Unit]
 Description=Temp Scanner Service
+After=dbus-org.bluez.service
 
 [Service]
 Type=simple
