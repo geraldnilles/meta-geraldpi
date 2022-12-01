@@ -100,6 +100,9 @@ done
 
 cp $2 $MOUNTPOINT/SYSTEM.img
 
+# Copy a githash into the boot partition
+cp ../githash $MOUNTPOINT/
+
 cp Image-initramfs-raspberrypi*.bin $MOUNTPOINT/kernel8.img
 
 sync
