@@ -9,7 +9,7 @@ SRC_URI = " \
     file://gpio.sh \
     file://heat.sh \
     file://scan.py \
-    file://test_client.py \
+    file://history.py \
     file://max_temp.sh \
     file://min_temp.sh \
     file://room_average.py \
