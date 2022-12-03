@@ -24,6 +24,7 @@ do_build[depends] += " sd-flash:do_deploy "
 
 # Set a default password to 'geraldpi'
 # Used this command to generate the hash: openssl passwd geraldpi
+# Escape the $ symbols and use single quotes
 inherit extrausers
-EXTRA_USERS_PARAMS = " usermod -p '$1$LRQCqbZE$TshPObg6s.jwB6J9T2xJJ.' root; "
+EXTRA_USERS_PARAMS = " usermod -p '\$1\$LRQCqbZE\$TshPObg6s.jwB6J9T2xJJ.' root; "
 
