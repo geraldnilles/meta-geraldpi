@@ -22,3 +22,9 @@ IMAGE_FEATURES += " ssh-server-dropbear "
 
 do_build[depends] += " sd-flash:do_deploy "
 
+# Set a default password for root
+inherit extrausers
+EXTRA_USERS_PARAMS = "\
+    usermod -p $( openssl passwd geraldpi ) root; \
+"
+
