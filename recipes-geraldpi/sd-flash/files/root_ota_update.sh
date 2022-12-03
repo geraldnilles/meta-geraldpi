@@ -32,8 +32,8 @@ then
 fi
 
 # Push this machine's public key to the authorized keys
-my_scp ~/.ssh/id_rsa.pub root@$1:/tmp/ota.pub
-my_ssh root@$1 cat /tmp/ota.pub >> /home/root/.ssh/authorized_keys
+MYKEY=$( cat ~/.ssh/id_rsa.pub )
+my_ssh root@$1 " mkdir -p /home/root/.ssh ; echo $MYKEY >> /home/root/.ssh/authorized_keys"
 
 my_ssh root@$1 mount /dev/mmcblk0p1 /boot
 
@@ -45,6 +45,5 @@ my_ssh root@$1 umount /boot
 
 echo "Update complete.  Restarting in 1 minutes"
 my_ssh root@$1 /sbin/shutdown -r 1
-
 
 
