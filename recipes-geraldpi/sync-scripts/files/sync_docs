@@ -3,6 +3,7 @@
 # This script uses git to sync all documents for each geraldpi-documents
 # instance on the network. 
 
+# TODO Use a dedicated set of RSA ID keys just for syncing
 
 cd /media/documents
 
