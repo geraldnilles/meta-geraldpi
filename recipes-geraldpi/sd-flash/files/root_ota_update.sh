@@ -20,8 +20,6 @@ then
 	exit 128
 fi
 
-cd ../../../../poky/build/tmp/deploy/images/raspberrypi4-64/
-
 if [ -z $2 ]
 then
 	echo "Please provide an image name"
@@ -33,6 +31,9 @@ then
 	exit 128
 fi
 
+# Push this machine's public key to the authorized keys
+my_scp ~/.ssh/id_rsa.pub root@$1:/tmp/ota.pub
+my_ssh root@$1 cat /tmp/ota.pub >> /home/root/.ssh/authorized_keys
 
 my_ssh root@$1 mount /dev/mmcblk0p1 /boot
 
@@ -42,9 +43,8 @@ my_scp $2 root@$1:/boot/SYSTEM.img
 my_ssh root@$1 sync
 my_ssh root@$1 umount /boot
 
-echo "Update complete.  Restarting in 10s..."
-sleep 10
-my_ssh root@$1 /sbin/reboot
+echo "Update complete.  Restarting in 1 minutes"
+my_ssh root@$1 /sbin/shutdown -r 1
 
 
 
