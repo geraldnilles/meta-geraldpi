@@ -22,9 +22,8 @@ IMAGE_FEATURES += " ssh-server-dropbear "
 
 do_build[depends] += " sd-flash:do_deploy "
 
-# Set a default password for root
+# Set a default password to 'geraldpi'
+# Used this command to generate the hash: openssl passwd geraldpi
 inherit extrausers
-EXTRA_USERS_PARAMS = "\
-    usermod -p $( openssl passwd geraldpi ) root; \
-"
+EXTRA_USERS_PARAMS = " usermod -p '$1$LRQCqbZE$TshPObg6s.jwB6J9T2xJJ.' root; "
 
