@@ -20,7 +20,6 @@ then
 	exit 128
 fi
 
-cd ../../../../poky/build/tmp/deploy/images/raspberrypi4-64/
 
 if [ -z $2 ]
 then
@@ -44,7 +43,9 @@ then
 	exit 128
 fi
 
-
+# Push this machine's public key to the authorized keys
+MYKEY=$( cat ~/.ssh/id_rsa.pub )
+my_ssh root@$1 " mkdir -p /home/root/.ssh ; echo $MYKEY >> /home/root/.ssh/authorized_keys"
 
 my_ssh root@$1 mount /dev/mmcblk0p1 /boot
 
@@ -70,14 +71,11 @@ done
 my_scp $2 root@$1:/boot/SYSTEM.img
 
 # Copy the InitRamFS version of the kernel. not the vanilla kernel which is included in the IMAGE_BOOT_FILES above
-my_scp Image-initramfs-raspberrypi4-64.bin root@$1:/boot/kernel8.img
+my_scp Image-initramfs-$MACHINE.bin root@$1:/boot/kernel8.img
 
 my_ssh root@$1 sync
 my_ssh root@$1 umount /boot
 
-echo "Update complete.  Restarting in 10s..."
-sleep 10
-my_ssh root@$1 /sbin/reboot
-
-
+echo "Update complete.  Restarting in 1 minutes"
+my_ssh root@$1 /sbin/shutdown -r 1
 
