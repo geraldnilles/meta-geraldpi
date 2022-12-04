@@ -3,12 +3,10 @@
 
 set -e 
 
-if [ -z $2 ]
+if [ -z $1 ]
 then
 
-	echo "Please specify both the gpio and the state desired"
-	echo "To set GPIO 69 to high:"
-	echo " > $0 69 1"
+	echo "Please specify a GPIO number"
 	exit -1
 fi
 
@@ -22,5 +20,12 @@ fi
 
 cd gpio$1
 echo out > direction
-echo $2 > value
+
+# If the value is not specified, print the gpios's current value
+if [ -z $2 ]
+then
+	cat value
+else
+	echo $2 > value
+fi
 

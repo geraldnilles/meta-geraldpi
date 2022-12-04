@@ -16,16 +16,26 @@ temp=$( ./min_temp.sh )
 
 echo Temp: $temp Set: $MIN_TEMP
 
+# Rooms are too cold
 if [ $temp -lt $MIN_TEMP ]
 then
-	echo "Turning Heat On"
-	./heat.sh 1
+	# If heat is off, Turn it on
+	if [ $( ./heat.sh ) -eq 0 ]
+	then
+		echo "Turning Heat On"
+		./heat.sh 1
+	fi
 fi 
 
+# Rooms are sufficiently warm
 if [ $temp -gt $(( $MIN_TEMP + 0 )) ]
 then
-	echo "Turning Heat Off"
-	./heat.sh 0
+	# If heat is still on, shut if off
+	if [ $( ./heat.sh ) -eq 1 ]
+	then
+		echo "Turning Heat Off"
+		./heat.sh 0
+	fi
 fi
 
 # TODO Add range for enabling cooling
