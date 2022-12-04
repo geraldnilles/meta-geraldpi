@@ -6,7 +6,7 @@
 
 cd "$(dirname "$0")"
 
-MIN_TEMP=68
+MIN_TEMP=69
 
 temp=$( ./min_temp.sh )
 
@@ -18,7 +18,7 @@ then
 	./heat.sh 1
 fi 
 
-if [ $temp -gt $(( $MIN_TEMP + 1 )) ]
+if [ $temp -gt $(( $MIN_TEMP + 0 )) ]
 then
 	echo "Turning Heat Off"
 	./heat.sh 0
