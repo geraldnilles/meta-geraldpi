@@ -13,9 +13,9 @@ df = pd.DataFrame(columns=["Time","Room","Temp"])
 db_cutoff = datetime.timedelta(days=1)
 
 def callback(device,adv_data):
-    global last_write, df
+    global df
     
-    if device.name == "Master Temperature" or device.name == "Bedroom Temperature":
+    if device.name == "Master Temperature" or device.name == "Bedroom Temperature" or "gpiTemp" in device.name:
 
         # Timestamp the data
         now = datetime.datetime.now()
