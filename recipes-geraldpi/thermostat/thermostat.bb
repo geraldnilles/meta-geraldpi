@@ -10,6 +10,7 @@ SRC_URI = " \
     file://heat.sh \
     file://scan.py \
     file://history.py \
+    file://csv_out.py \
     file://max_temp.sh \
     file://min_temp.sh \
     file://room_average.py \
