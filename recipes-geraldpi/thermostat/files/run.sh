@@ -14,6 +14,9 @@ MIN_TEMP=69
 
 temp=$( ./min_temp.sh )
 
+# TODO If temp is blank, then no sensors were found. Heating and cooling shoudl
+# be shut off
+
 echo Temp: $temp Set: $MIN_TEMP
 
 # Rooms are too cold
