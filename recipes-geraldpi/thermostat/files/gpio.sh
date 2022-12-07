@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-set -e 
+set -e
 
 if [ -z $1 ]
 then
@@ -15,11 +15,14 @@ cd /sys/class/gpio
 # Export the GPIO if it has not been exported already
 if [ ! -d gpio$1 ]
 then
+	echo "Setting Up GPIO"
 	echo $1 > export
-fi
+	cd gpio$1
+	echo out > direction
+else
+	cd gpio$1
 
-cd gpio$1
-echo out > direction
+fi
 
 # If the value is not specified, print the gpios's current value
 if [ -z $2 ]
