@@ -10,7 +10,7 @@
 
 cd "$(dirname "$0")"
 
-MIN_TEMP=69
+MIN_TEMP=$( temp_lookup.sh )
 
 temp=$( ./min_temp.sh )
 
@@ -43,3 +43,17 @@ fi
 
 # TODO Add range for enabling cooling
 
+# TODO Add logic fro switching between heating and cooling mode
+# Write the current mode into a /tmp file.  If the entire house temp exceeds
+# the MIN threshold, then switch to heat.  If the entire house temp exceeds
+# MAX, then switch to Cool.  
+#
+# My reasoning is becasue a particular temp sensor might be placed close to a
+# vent and have a large swing.  I dont want to wildly toggle between heating
+# and cooling
+
+# TODO Add logic for turning on the Fan if the temp differential between rooms is > 5 degrees
+# 	If Temp Diff > 5 dgrees and Fan is off,
+# 		Turn on fan exit
+# 	... Rest of logic
+# THis will provide 1 cycle to try to even out temp before appling heat or cool
