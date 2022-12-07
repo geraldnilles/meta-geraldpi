@@ -13,32 +13,24 @@
 # FAT32 partition with a single file named "WIPEME".  Maybe one day.
 
 # User provdes the disk devices
-if [ -z $1 ]
+if [ -z $2 ]
 then
-	echo "Please provide a device name to format"
+	echo "Please provide two device names"
 	exit 128
 fi
 
-
-(
-echo g # Create a new empty GPT partition table
-echo n # Add a new partition
-echo " "  # Partition number
-echo " "  # First sector (Accept default: 1)
-echo " "  # Last sector (Accept default: varies)
-echo " "  # Last sector (Accept default: varies)
-echo " "  # Last sector (Accept default: varies)
-echo " "  # Last sector (Accept default: varies)
-echo w # Write changes
-) | fdisk $1
+# Wipe the first 500MB of each disk
+dd if=/dev/zero of=$1 bs=1M count=500 &
+dd if=/dev/zero of=$2 bs=1M count=500 &
+wait
 
 # Format the entire partition as an ext4 filesystem. The label is set to
 # webapps so the right partition is mounted
-mkfs.ext4 -L webapps "$11"
+mkfs.btrfs -d raid1 -m raid1 -L webapps $1 $2
 
 mkdir temp
 
-mount "$11" ./temp
+mount "$1" ./temp
 
 cd ./temp
 
