@@ -14,6 +14,8 @@ SRC_URI = " \
     file://max_temp.sh \
     file://min_temp.sh \
     file://room_average.py \
+    file://temp_lookup.sh \
+    file://schedule.txt \
     file://temp-scanner.service \
     file://thermostat.service \
     file://thermostat.timer \

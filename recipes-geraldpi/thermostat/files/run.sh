@@ -10,7 +10,7 @@
 
 cd "$(dirname "$0")"
 
-MIN_TEMP=$( temp_lookup.sh )
+MIN_TEMP=$( ./temp_lookup.sh )
 
 temp=$( ./min_temp.sh )
 
