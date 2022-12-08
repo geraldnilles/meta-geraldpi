@@ -21,7 +21,7 @@ IMAGE_INSTALL:remove = " \
 # Add an fstab entry to automount the USB drive
 add_usb_automount() {
 
-	echo "LABEL=webapps	/media	ext4	defaults,nofail	0	0" >> ${IMAGE_ROOTFS}/etc/fstab
+	echo "LABEL=webapps	/media	auto	defaults,nofail	0	0" >> ${IMAGE_ROOTFS}/etc/fstab
 
 }
 
