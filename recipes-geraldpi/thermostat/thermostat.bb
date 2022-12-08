@@ -38,6 +38,7 @@ do_install() {
         install -d ${D}${webapp_dir}
 	install -m 0755 ${S}/*.sh ${D}${webapp_dir}
 	install -m 0755 ${S}/*.py ${D}${webapp_dir}
+	install -m 0644 ${S}/*.txt ${D}${webapp_dir}
 
 }
 

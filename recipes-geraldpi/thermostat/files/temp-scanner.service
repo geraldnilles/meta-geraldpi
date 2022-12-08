@@ -4,6 +4,7 @@ After=dbus-org.bluez.service
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sleep 30
 ExecStart=/opt/thermostat/scan.py
 Restart=Always
 
