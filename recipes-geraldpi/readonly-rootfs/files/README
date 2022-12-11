@@ -1,0 +1,47 @@
+
+v1
+==
+
+Lowest-Level RootFS is in a squashfs file located in the boot partition. The
+file is named SYSTEM.img.  
+
+The 2nd SD card partition consists of an ext4 filesystem. This contains the
+nonvolitile memory.  
+
+On boot, a tmpfs mount is created and the SYSTEM.img file is copied there.
+This allows the entire system to run from RAM and allows you to OTA the
+SYSTEM.img file on the fly
+
+By default, the SquashFS root acts as the lowest level and the ext4 root is
+mounted as an overaly.  Any changes to the rootfs are saved in this ext4
+partition.
+
+If a file named "readonly" is placed in the boot partiion, the tmpfs partition
+will be used as the upper-most overlay layer.  This means any changes to the
+rootfs will not persist a reboot 
+
+
+v2
+==
+
+In the next iterration, i will try a different approach that simplifies things a bit.
+
+The Lowest-level RootFS will be a btrfs image file.  I will continue to use
+SYSTEM.img and place it in the boot partition. The initramfs will mount this
+image file as root. 
+
+By default, this parition will be mounted RW and changes will be writen
+directly.  
+
+When the readonly file is present, a tmpfs mount point will act as the overlay.
+Since there are a handful of persistant files that are helpful (like the
+dropbear SSH keys), we will also have a "CONFIG.img" image which will be an
+overlay for the /etc/ folder.  Any changes to /etc will persist through that
+image.  If that CONFIG.img file does not exist, it will be a pure readonly boot
+
+In order to upgrade the rootfs, we will not be able to simply overwrite the
+SYSTEM.img.  Instead, we will write SYSTEM.new to the boot parition.  On
+bootup, the init script will look for that file and overwirte the old
+SYSTEM.img file before mounting everything
+
+
