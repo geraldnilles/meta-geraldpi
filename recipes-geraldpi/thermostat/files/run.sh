@@ -12,6 +12,8 @@ cd "$(dirname "$0")"
 
 MIN_TEMP=$( ./temp_lookup.sh )
 
+# TODO Print out the temp from each room for journalctl log purposes
+
 temp=$( ./min_temp.sh )
 
 # TODO If temp is blank, then no sensors were found. Heating and cooling shoudl

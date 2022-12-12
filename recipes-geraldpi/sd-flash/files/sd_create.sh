@@ -43,25 +43,17 @@ echo n # Add a new partition
 echo "p"  # Partition Type (primary)
 echo " "  # Partition Number (1)
 echo " "  # First sector (Accept default: 1)
-echo "+1G"  # 1Gig boot partition
+echo " "  # 1Gig boot partition
 echo "t"  # Set Partition Type)
 echo "c"  # Set W95 LBA TYpe
 
-echo n # Add a new partition
-echo "p"  # Partition Type (primary)
-echo " "  # Partition Number (3)
-echo " "  # First sector (Accept default: 1)
-echo " "  # Last sector (200MB
-
-echo w # Write changes
+echo "w" # Write changes
 ) | fdisk -W always -w always $1
 
+sleep 1
 
 # Format the Boot and Storage partitions
 mkfs.vfat -n boot "$11"
-
-# Format the nonvolatile partition
-mkfs.ext4 -L nvol "$12"
 
 else
 
