@@ -11,7 +11,7 @@ fi
 if [ -z $2 ]
 then
 	echo "Please provide an image name"
-	for x in $( ls *.squashfs* )
+	for x in $( ls *.ext4 *.btrfs )
 	do
 		echo $x
 
