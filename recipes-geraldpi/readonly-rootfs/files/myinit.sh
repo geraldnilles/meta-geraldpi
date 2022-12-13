@@ -25,10 +25,12 @@ if [[ -f /mnt/boot/readonly ]]
 then
 	# Read-Only Mode - any changes will not persist when the device reboots
 
-	mount -o ro /mnt/boot/SYSTEM.img /mnt/flash
+	mount -o ro,noload /mnt/boot/SYSTEM.img /mnt/flash
 
 	# Setup a volitile overlay partition for Read-only boots
 	mount -t tmpfs volpart /mnt/ram
+	sleep 1
+
 	mkdir -p /mnt/ram/upper
 	mkdir -p /mnt/ram/work
 
