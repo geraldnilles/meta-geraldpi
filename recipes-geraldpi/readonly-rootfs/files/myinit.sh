@@ -14,6 +14,7 @@ mount -t tmpfs inittemp /mnt
 mkdir -p /mnt/flash
 mkdir -p /mnt/ram
 mkdir -p /mnt/boot
+mkdir -p /mnt/root
 
 # Mout the main boot partition (this will be the only partition on the SD card
 # TODO Investigte how robust Fat32 is to unexpected shutdowns
@@ -42,7 +43,6 @@ else
 	umount /mnt/boot
 	mount -o rw /dev/mmcblk0p1 /mnt/boot
 	# Directly mount the SYSTEM.img as the root partition
-	mkdir /mnt/root
 	mount  /mnt/boot/SYSTEM.img /mnt/root
 fi
 
