@@ -15,9 +15,11 @@ do_install() {
 
 }
 
-# THis recipe only moves the myinit file into the sbin directory, it does not
-# enable read-only rootfs.  To actually enable it, Add "init=/sbin/myinit.sh"
-# to the end of the /boot/cmdline.txt line.  This is done inside the gpoky
-# distro config script
+RDEPENDS:${PN} += " \
+	e2fsprogs \
+	bash \
+	dosfstools \
+"
+
 
 

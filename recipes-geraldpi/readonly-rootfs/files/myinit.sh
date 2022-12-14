@@ -16,6 +16,16 @@ mkdir -p /mnt/ram
 mkdir -p /mnt/boot
 mkdir -p /mnt/root
 
+echo "Fixing any disk errors before boot" > /dev/kmsg
+fsck.vfat /dev/mmcblk0p1 -p
+sleep 1
+mount /dev/mmcblk0p1 /mnt/boot
+sleep 1
+fsck.ext4 /mnt/boot/SYSTEM.img -p
+sleep 1
+umount /mnt/boot
+
+echo "Mouting the system for booting" > /dev/kmsg
 # Mout the main boot partition (this will be the only partition on the SD card
 # TODO Investigte how robust Fat32 is to unexpected shutdowns
 mount -o ro /dev/mmcblk0p1 /mnt/boot
@@ -24,8 +34,9 @@ mount -o ro /dev/mmcblk0p1 /mnt/boot
 
 if [[ -f /mnt/boot/readonly ]]
 then
-	# Read-Only Mode - any changes will not persist when the device reboots
+	echo "Mouting in READONLY mode" > /dev/kmsg
 
+	# Read-Only Mode - any changes will not persist when the device reboots
 	mount -o ro,noload /mnt/boot/SYSTEM.img /mnt/flash
 
 	# Setup a volitile overlay partition for Read-only boots
@@ -38,6 +49,7 @@ then
 	mount -t overlay -o lowerdir=/mnt/flash,upperdir=/mnt/ram/upper,workdir=/mnt/ram/work overlayfs-root /mnt/root
 
 else
+	echo "Mouting in RW mode" > /dev/kmsg
 	# RW Mode.  Chnages to the rootfs will persist reboots
 	# Remount the boot partition as RO
 	umount /mnt/boot
@@ -46,12 +58,16 @@ else
 	mount  /mnt/boot/SYSTEM.img /mnt/root
 fi
 
+echo "Mouting complete" > /dev/kmsg
+
 
 cd /mnt/root
 
 mkdir -p boot
 mkdir -p flash
 mkdir -p ram
+
+echo "Adjusting the Hostname" > /dev/kmsg
 
 if [[ -f etc/hostname.orig ]]
 then
