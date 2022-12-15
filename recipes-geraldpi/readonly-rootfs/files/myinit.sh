@@ -21,44 +21,54 @@ fsck.vfat /dev/mmcblk0p1 -p
 sleep 1
 mount /dev/mmcblk0p1 /mnt/boot
 sleep 1
+
+
+if [[ -f /mnt/boot/SYSTEM.img.gz ]]
+then
+	echo "Upgrading the RootFS" > /dev/kmsg
+	rm /mnt/boot/SYSTEM.img
+
+	cd /mnt
+	gunzip /mnt/boot/SYSTEM.img.gz
+	sync
+
+	echo "Upgrade complete " > /dev/kmsg
+
+fi
+
 fsck.ext4 /mnt/boot/SYSTEM.img -p
 sleep 1
+
+
+sync
+
 umount /mnt/boot
 
 echo "Mouting the system for booting" > /dev/kmsg
 # Mout the main boot partition (this will be the only partition on the SD card
-# TODO Investigte how robust Fat32 is to unexpected shutdowns
 mount -o ro /dev/mmcblk0p1 /mnt/boot
 
-# TODO Look for SYSTEM.new and overwrite SYSTEM.img
+echo "Mouting in READONLY mode" > /dev/kmsg
 
-if [[ -f /mnt/boot/readonly ]]
-then
-	echo "Mouting in READONLY mode" > /dev/kmsg
+# Read-Only Mode - any changes will not persist when the device reboots
+mount -o ro,noload /mnt/boot/SYSTEM.img /mnt/flash
 
-	# Read-Only Mode - any changes will not persist when the device reboots
-	mount -o ro,noload /mnt/boot/SYSTEM.img /mnt/flash
+# Setup a volitile overlay partition for Read-only boots
+mount -t tmpfs volpart /mnt/ram
+sleep 1
 
-	# Setup a volitile overlay partition for Read-only boots
-	mount -t tmpfs volpart /mnt/ram
-	sleep 1
+mkdir -p /mnt/ram/upper
+mkdir -p /mnt/ram/work
 
-	mkdir -p /mnt/ram/upper
-	mkdir -p /mnt/ram/work
-
-	mount -t overlay -o lowerdir=/mnt/flash,upperdir=/mnt/ram/upper,workdir=/mnt/ram/work overlayfs-root /mnt/root
-
-else
-	echo "Mouting in RW mode" > /dev/kmsg
-	# RW Mode.  Chnages to the rootfs will persist reboots
-	# Remount the boot partition as RO
-	umount /mnt/boot
-	mount -o rw /dev/mmcblk0p1 /mnt/boot
-	# Directly mount the SYSTEM.img as the root partition
-	mount  /mnt/boot/SYSTEM.img /mnt/root
-fi
+mount -t overlay -o lowerdir=/mnt/flash,upperdir=/mnt/ram/upper,workdir=/mnt/ram/work overlayfs-root /mnt/root
 
 echo "Mouting complete" > /dev/kmsg
+
+if [[ -f /mnt/boot/dropbear.key ]]
+then
+	echo "Installing Dropbear key from boot partition" > /dev/kmsg
+	cp /mnt/boot/dropbear.key /mnt/root/etc/dropbear/dropbear_rsa_host_key
+fi
 
 
 cd /mnt/root

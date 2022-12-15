@@ -11,7 +11,7 @@ fi
 if [ -z $2 ]
 then
 	echo "Please provide an image name"
-	for x in $( ls *.ext4 *.btrfs )
+	for x in $( ls *.ext4.gz )
 	do
 		echo $x
 
@@ -90,7 +90,7 @@ do
 
 done
 
-cp $2 $MOUNTPOINT/SYSTEM.img
+cp $2 $MOUNTPOINT/SYSTEM.img.gz
 
 # Copy a githash into the boot partition
 cp ../githash $MOUNTPOINT/
