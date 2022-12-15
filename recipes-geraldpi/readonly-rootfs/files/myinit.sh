@@ -28,7 +28,6 @@ then
 	echo "Upgrading the RootFS" > /dev/kmsg
 	rm /mnt/boot/SYSTEM.img
 
-	cd /mnt
 	gunzip /mnt/boot/SYSTEM.img.gz
 	sync
 
