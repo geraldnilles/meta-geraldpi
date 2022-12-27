@@ -4,6 +4,14 @@
 # schedule.txt file
 
 HOUR=$( date +%H )
+OUTPUT=$( cat schedule.txt | awk -v HOUR=$HOUR '$1==HOUR { print $2 " "$3 }' )
 
-cat schedule.txt | awk -v HOUR=$HOUR '$1==HOUR { print $2 }'
+# If no hour match was found, use the "default" line
+if [ -z "$OUTPUT" ]
+then
+	HOUR="default"
+	cat schedule.txt | awk -v HOUR=$HOUR '$2==HOUR { print $2 " "$3 }'
+else
+	echo $OUTPUT
+fi
 
