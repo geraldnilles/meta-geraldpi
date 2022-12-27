@@ -24,7 +24,7 @@ fi
 if [ -z $2 ]
 then
 	echo "Please provide an image name"
-	for x in $( ls *.squashfs* )
+	for x in $( ls *.ext4.gz )
 	do
 		echo $x
 
@@ -32,23 +32,31 @@ then
 	exit 128
 fi
 
-if [ -z $3 ]
+if [ -z $ROOT_ONLY ]
 then
-	echo "Please provide an env filename"
-	for x in $( ls *.env )
-	do
-		echo $x
+	if [ -z $3 ]
+	then
+		echo "Please provide an env filename"
+		for x in $( ls *.env )
+		do
+			echo $x
 
-	done
-	exit 128
+		done
+		exit 128
+	fi
 fi
 
 # Push this machine's public key to the authorized keys
 MYKEY=$( cat ~/.ssh/id_rsa.pub )
 my_ssh root@$1 " mkdir -p /home/root/.ssh ; echo $MYKEY >> /home/root/.ssh/authorized_keys"
 
-my_ssh root@$1 mount /dev/mmcblk0p1 /boot
+my_ssh root@$1 mount -o ro /dev/mmcblk0p1 /boot
+my_ssh root@$1 mount -o remount,rw /boot
 
+
+# If a Full OTA, copy all the kernel modules
+if [ -z $ROOT_ONLY ]
+then
 # Get the Image boog files from the .env file
 source $3
 for pair in $IMAGE_BOOT_FILES
@@ -67,14 +75,18 @@ do
 	fi
 done
 
-# Copy the root filesystem
-my_scp $2 root@$1:/boot/SYSTEM.img
-
 # Copy the InitRamFS version of the kernel. not the vanilla kernel which is included in the IMAGE_BOOT_FILES above
 my_scp Image-initramfs-$MACHINE.bin root@$1:/boot/kernel8.img
 
+fi
+
+# Copy the root filesystem
+my_scp $2 root@$1:/boot/SYSTEM.img.gz
+
 my_ssh root@$1 sync
+my_ssh root@$1 mount -o remount,ro /boot
 my_ssh root@$1 umount /boot
+
 
 echo "Update complete.  Restarting in 1 minutes"
 my_ssh root@$1 /sbin/shutdown -r 1

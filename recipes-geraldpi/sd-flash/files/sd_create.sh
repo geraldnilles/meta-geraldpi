@@ -97,13 +97,13 @@ cp ../githash $MOUNTPOINT/
 
 cp Image-initramfs-raspberrypi*.bin $MOUNTPOINT/kernel8.img
 
+# TODO Create a dropbear key
+
 sync
 
 umount $MOUNTPOINT
 
 rm -r $MOUNTPOINT
-
-
 
 sync
 
