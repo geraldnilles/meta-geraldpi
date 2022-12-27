@@ -5,17 +5,23 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 inherit systemd
 
 SRC_URI = " \
-    file://run.sh \
+    file://auto.sh \
+    file://cool.sh \
+    file://csv_out.py \
+    file://fan.sh \
+    file://get_state.sh \
     file://gpio.sh \
     file://heat.sh \
-    file://scan.py \
     file://history.py \
-    file://csv_out.py \
     file://max_temp.sh \
     file://min_temp.sh \
+    file://off.sh \
     file://room_average.py \
-    file://temp_lookup.sh \
+    file://run.sh \
+    file://scan.py \
     file://schedule.txt \
+    file://target_offset.txt \
+    file://temp_lookup.sh \
     file://temp-scanner.service \
     file://thermostat.service \
     file://thermostat.timer \
