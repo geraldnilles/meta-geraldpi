@@ -3,9 +3,9 @@
 # default temp will be used
 
 Hour  Min and Max Temp (F)
-00 	66	77
-01 	66	77
-02 	66	77
+00 	67	77
+01 	67	77
+02 	67	77
 03 	67	77
 04 	67	77
 05 	67	77

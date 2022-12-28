@@ -52,15 +52,6 @@ case $STATE in
 			exit
 		fi
 
-		# Allow fan mode to shut off early if the Target temp is met,
-		# but not exceeded as long as the delta between rooms is within
-		# 1 degree
-		if [ $TEMP_DELTA -lt 2 ] && [ $TEMP_MIN -ge $TARGET_MIN ] && [ $TEMP_MAX -le $TARGET_MAX ]
-		then
-			./off.sh
-			exit
-		fi
-
 		if [ $TEMP_MIN -lt $TARGET_MIN ]
 		then
 			./heat.sh
@@ -86,6 +77,7 @@ case $STATE in
 
 	;;
 	heat)
+		# TODO Implement a timeout?
 		if [ $TEMP_MIN -gt $TARGET_MIN ]
 		then
 			./fan.sh
