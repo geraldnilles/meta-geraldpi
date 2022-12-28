@@ -19,6 +19,7 @@ then
 	echo $1 > export
 	cd gpio$1
 	echo out > direction
+	sleep 1
 else
 	cd gpio$1
 
