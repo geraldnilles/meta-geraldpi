@@ -17,7 +17,6 @@ SRC_URI = " \
     file://min_temp.sh \
     file://off.sh \
     file://room_average.py \
-    file://run.sh \
     file://scan.py \
     file://schedule.txt \
     file://target_offset.txt \
@@ -45,6 +44,9 @@ do_install() {
 	install -m 0755 ${S}/*.sh ${D}${webapp_dir}
 	install -m 0755 ${S}/*.py ${D}${webapp_dir}
 	install -m 0644 ${S}/*.txt ${D}${webapp_dir}
+
+	# Use Auto.sh by default
+	ln -s auto.sh ${D}${webapp_dir}/run.sh
 
 }
 
