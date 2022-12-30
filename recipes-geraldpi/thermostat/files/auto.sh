@@ -88,6 +88,7 @@ case $STATE in
 		# After 5 straight cycles, reset the state machine
 		if [ $TIMER -gt $TIMEOUT ]
 		then
+			echo "Fan Timeout"
 			./off.sh
 			echo 0 > $TIMER_FILE
 			exit
@@ -106,6 +107,7 @@ case $STATE in
 		# After 5 straight cycles, reset the state machine
 		if [ $TIMER -gt $TIMEOUT ]
 		then
+			echo "Cool Timeout"
 			./off.sh
 			echo 0 > $TIMER_FILE
 			exit
@@ -125,6 +127,7 @@ case $STATE in
 		# After 5 straight cycles, reset the state machine
 		if [ $TIMER -gt $TIMEOUT ]
 		then
+			echo "Heat Timeout"
 			./off.sh
 			echo 0 > $TIMER_FILE
 			exit
