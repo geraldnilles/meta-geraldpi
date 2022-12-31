@@ -9,7 +9,7 @@ cd "$(dirname "$0")"
 
 
 TIMER_FILE=/tmp/gpi-timer
-TIMEOUT=5
+TIMEOUT=8
 
 TARGET_MIN=$( ./temp_lookup.sh | awk '{ print $1 }' )
 TARGET_MAX=$( ./temp_lookup.sh | awk '{ print $2 }' )
