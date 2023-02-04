@@ -6,8 +6,15 @@ inherit systemd
 
 SRC_URI = " \
     file://aircast.service \
-    git://github.com/philippe44/AirConnect.git;rev=14ecfa56f0e20b4a9e2615761ef34f7e92bc2128;branch=master;protocol=https \
+    git://github.com/philippe44/AirConnect.git;branch=master;protocol=https \
 "
+
+# Use this if you want to use a specific commit
+# SRCREV = "12963c790fcbfd46b86b423bd16d16fa69827f76"
+
+# Use this if you want to automatically pull the latest commit
+SRCREV = "${AUTOREV}"
+PV = "1.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 

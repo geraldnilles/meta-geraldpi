@@ -1,6 +1,7 @@
 [Unit]
 Description=Aircast Service
-After=systemd-networkd.service
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
