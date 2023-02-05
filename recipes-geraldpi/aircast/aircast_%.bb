@@ -25,7 +25,7 @@ do_install() {
 
         install -d ${D}/${bindir}
 	# Using the Static binary for maximum compatibility
-	install -m 0755 ${S}/bin/aircast-aarch64-static ${D}/${bindir}/aircast
+	install -m 0755 ${S}/bin/aircast-linux-aarch64-static ${D}/${bindir}/aircast
 }
 
 
