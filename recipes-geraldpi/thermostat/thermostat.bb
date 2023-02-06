@@ -3,7 +3,6 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 
-inherit autotools
 inherit systemd
 
 SRC_URI = " \
@@ -18,6 +17,10 @@ SRCREV = "${AUTOREV}"
 PV = "1.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
+
+do_install() {
+	DESTDIR=${D} make install
+}
 
 FILES:${PN} += " \
 	/opt/thermostat/* \
