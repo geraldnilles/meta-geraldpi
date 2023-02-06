@@ -37,5 +37,4 @@ RDEPENDS:${PN} += " \
 	bluez5 \
 "
 
-SYSTEMD_SERVICE:${PN} = " thermostat.timer temp-scanner.service "
-
+SYSTEMD_SERVICE:${PN} = " thermostat.timer temp-scanner.service offset_reset.timer webserver.service "
