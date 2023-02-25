@@ -34,6 +34,7 @@ RDEPENDS:${PN} += " \
 	python3-pandas \
 	python3-bleak \
 	python3-flask \
+	python3-matplotlib \
 	bluez5 \
 "
 
