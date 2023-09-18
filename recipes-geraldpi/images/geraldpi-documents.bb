@@ -14,6 +14,8 @@ IMAGE_INSTALL:append = " \
 # TODO Add my own "scan, convert to PDF and commit to git" script that requires
 # utsushi and tesseract
 
+# TODO Generate dropbear keys at buildtime to allow for seemless syncing
+# between devices
 
 # Add an fstab entry to automount the USB drive
 # This must be an EXT4 partition with the label "documents"
