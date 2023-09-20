@@ -25,5 +25,4 @@ ROOTFS_POSTINSTALL_COMMAND += " overwrite_hostname; "
 #	dtoverlay=vc4-kms-v3d
 # This shoudl work but i'm not sure if i can add it at the image level or if i
 # need to add it in a local config
-VC4GRAPHICS = "1"
 
