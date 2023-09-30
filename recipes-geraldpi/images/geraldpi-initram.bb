@@ -6,7 +6,6 @@ include recipes-core/images/core-image-minimal.bb
 IMAGE_INSTALL:append = " \
 	bash \
 	readonly-rootfs \
-	kernel-modules \
 "
 
 IMAGE_FEATURES = " "
