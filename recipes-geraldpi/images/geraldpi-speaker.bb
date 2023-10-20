@@ -10,6 +10,7 @@ include recipes-geraldpi/images/geraldpi-image.bb
 # Include modules in rootfs
 IMAGE_INSTALL:append = " \
 	wireplumber \
+	bluez5 \
 "
 
 # Update the hostname for this image
