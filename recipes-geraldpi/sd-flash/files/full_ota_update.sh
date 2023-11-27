@@ -47,7 +47,7 @@ then
 fi
 
 # Push this machine's public key to the authorized keys
-MYKEY=$( cat ~/.ssh/id_rsa.pub )
+MYKEY=$( cat ~/.ssh/id_*.pub )
 my_ssh root@$1 " mkdir -p /home/root/.ssh ; echo $MYKEY >> /home/root/.ssh/authorized_keys"
 
 my_ssh root@$1 mount -o ro /dev/mmcblk0p1 /boot
