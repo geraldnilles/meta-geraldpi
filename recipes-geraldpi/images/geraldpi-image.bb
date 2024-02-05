@@ -16,7 +16,7 @@ IMAGE_INSTALL:append = " \
 	discover \
 "
 
-IMAGE_FSTYPES = " wic ext4.gz " 
+IMAGE_FSTYPES = " wic ext4.gz cpio.gz " 
 
 IMAGE_FEATURES += " ssh-server-dropbear "
 
