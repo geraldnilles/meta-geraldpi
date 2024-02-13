@@ -11,7 +11,7 @@ fi
 if [ -z $2 ]
 then
 	echo "Please provide an image name"
-	for x in $( ls *.ext4.gz )
+	for x in $( ls *.cpio.gz )
 	do
 		echo $x
 
@@ -90,12 +90,10 @@ do
 
 done
 
-cp $2 $MOUNTPOINT/SYSTEM.img.gz
+cp $2 $MOUNTPOINT/system.cpio.gz
 
 # Copy a githash into the boot partition
 cp ../githash $MOUNTPOINT/
-
-cp Image-initramfs-raspberrypi*.bin $MOUNTPOINT/kernel8.img
 
 # TODO Create a dropbear key
 

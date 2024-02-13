@@ -24,7 +24,7 @@ fi
 if [ -z $2 ]
 then
 	echo "Please provide an image name"
-	for x in $( ls *.ext4.gz )
+	for x in $( ls *.cpio.gz )
 	do
 		echo $x
 
@@ -75,13 +75,10 @@ do
 	fi
 done
 
-# Copy the InitRamFS version of the kernel. not the vanilla kernel which is included in the IMAGE_BOOT_FILES above
-my_scp Image-initramfs-$MACHINE.bin root@$1:/boot/kernel8.img
-
 fi
 
 # Copy the root filesystem
-my_scp $2 root@$1:/boot/SYSTEM.img.gz
+my_scp $2 root@$1:/boot/system.cpio.gz
 
 my_ssh root@$1 sync
 my_ssh root@$1 mount -o remount,ro /boot
