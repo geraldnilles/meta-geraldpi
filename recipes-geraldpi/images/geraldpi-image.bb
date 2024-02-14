@@ -1,6 +1,6 @@
 
 # Base this image on core-image-minimal
-include recipes-core/images/core-image-minimal.bb
+include recipes-core/images/core-image-base.bb
 
 
 # Include these packages in rootfs
