@@ -12,16 +12,14 @@ inherit allarch systemd
 
 do_install() {
     install -d ${D}${sysconfdir}/systemd/system
-    install -m 0644 ${WORKDIR}/set-hostname-from-serial.service ${D}${sysconfdir}/systemd/system/
+    install -m 0644 ${WORKDIR}/*.service ${D}${systemd_unitdir}/system
 
     install -d ${D}${bindir}
     install -m 0755 ${WORKDIR}/set-hostname-from-serial.sh ${D}${bindir}/
 }
 
-SYSTEMD_SERVICE_${PN} = "set-hostname-from-serial.service"
-FILES_${PN} += "${systemd_system_unitdir}/set-hostname-from-serial.service \
-                ${bindir}/set-hostname-from-serial.sh"
 
 # Enable the systemd service
+SYSTEMD_SERVICE:${PN} = "set-hostname-from-serial.service"
 SYSTEMD_AUTO_ENABLE = "enable"
 
