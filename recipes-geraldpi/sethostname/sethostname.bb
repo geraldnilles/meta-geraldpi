@@ -11,10 +11,10 @@ S = "${WORKDIR}"
 inherit allarch systemd
 
 do_install() {
-    install -d ${D}${sysconfdir}/systemd/system
+    install -d ${D}/${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/*.service ${D}${systemd_unitdir}/system
 
-    install -d ${D}${bindir}
+    install -d ${D}/${bindir}
     install -m 0755 ${WORKDIR}/set-hostname-from-serial.sh ${D}${bindir}/
 }
 
