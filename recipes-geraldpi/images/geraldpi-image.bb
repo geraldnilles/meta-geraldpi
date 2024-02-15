@@ -14,6 +14,7 @@ IMAGE_INSTALL:append = " \
 	bash \
 	bash-completion \
 	discover \
+	sethostname \
 "
 
 IMAGE_FSTYPES = " wic ext4.gz cpio.gz " 

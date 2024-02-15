@@ -1,0 +1,13 @@
+[Unit]
+Description=Set Hostname from Raspberry Pi Serial Number
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/set-hostname-from-serial.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=sysinit.target
+
