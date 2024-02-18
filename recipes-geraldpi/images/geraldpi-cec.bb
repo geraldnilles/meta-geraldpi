@@ -12,6 +12,14 @@ IMAGE_INSTALL:append = " \
 	cec-control \
 "
 
+IMAGE_INSTALL:remove = " \
+	linux-firmware-rpidistro-bcm43430 \
+	linux-firmware-rpidistro-bcm43455 \
+	bash \
+	bash-completion \
+	discover \
+"
+
 # Update the hostname for this image
 overwrite_hostname() { 
 	echo "gpi-cec" > ${IMAGE_ROOTFS}/etc/hostname
