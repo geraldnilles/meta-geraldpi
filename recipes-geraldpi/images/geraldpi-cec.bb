@@ -1,6 +1,6 @@
 
 # Base this image on core-image-minimal
-include recipes-core/images/core-image-base.bb
+include recipes-core/images/core-image-minimal.bb
 
 
 # Include these packages in rootfs
@@ -8,8 +8,6 @@ IMAGE_INSTALL:append = " \
 	wpa-supplicant \
 	cec-control \
 	linux-firmware-bcm43430 \
-	linux-firmware-rpidistro-bcm43430 \
-	linux-firmware-rpidistro-bcm43455 \
 	tzdata \
 	sethostname \
 "
