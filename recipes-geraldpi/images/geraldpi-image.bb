@@ -15,6 +15,7 @@ IMAGE_INSTALL:append = " \
 	bash-completion \
 	discover \
 	sethostname \
+	kill-led \
 "
 
 IMAGE_FSTYPES = " wic ext4.gz cpio.gz " 

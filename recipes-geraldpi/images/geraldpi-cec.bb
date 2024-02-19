@@ -21,8 +21,4 @@ overwrite_hostname() {
 ROOTFS_POSTINSTALL_COMMAND += " overwrite_hostname; "
 
 
-#TODO need to add this line to the config.txt file to get cec0 working:
-#	dtoverlay=vc4-kms-v3d
-# This shoudl work but i'm not sure if i can add it at the image level or if i
-# need to add it in a local config
 

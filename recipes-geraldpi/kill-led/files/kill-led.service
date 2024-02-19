@@ -1,0 +1,11 @@
+[Unit]
+Description=Kills the LED after bootup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/kill-led.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+
