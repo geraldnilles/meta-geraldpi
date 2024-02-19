@@ -50,8 +50,7 @@ fi
 MYKEY=$( cat ~/.ssh/id_*.pub )
 my_ssh root@$1 " mkdir -p /home/root/.ssh ; echo $MYKEY >> /home/root/.ssh/authorized_keys"
 
-my_ssh root@$1 mount -o ro /dev/mmcblk0p1 /boot
-my_ssh root@$1 mount -o remount,rw /boot
+my_ssh root@$1 mount /dev/mmcblk0p1 /boot
 
 
 # If a Full OTA, copy all the kernel modules
@@ -81,7 +80,6 @@ fi
 my_scp $2 root@$1:/boot/system.cpio.gz
 
 my_ssh root@$1 sync
-my_ssh root@$1 mount -o remount,ro /boot
 my_ssh root@$1 umount /boot
 
 
