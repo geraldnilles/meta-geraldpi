@@ -1,6 +1,6 @@
-# Webapps
+# Bluetooth Speaker
 ################
-# This server will run a handful of Python Flask Webapps
+# This is a rasbperry pi based bluetooth speaker
 
 
 # Base this image on core-image-minimal
