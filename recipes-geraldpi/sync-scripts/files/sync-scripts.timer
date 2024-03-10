@@ -2,8 +2,9 @@
 Description=Periodic Sync docs between all geraldpi-document instances
 
 [Timer]
-OnCalendar=*-*-* 02:00:00
+OnCalendar=hourly
 RandomizedDelaySec=600
+Persistent=true
 
 [Install]
 WantedBy=timers.target
