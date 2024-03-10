@@ -33,4 +33,5 @@ overwrite_hostname() {
 # Add all the rootfs modifications to the list
 ROOTFS_POSTINSTALL_COMMAND += " add_usb_automount; overwrite_hostname; "
 
-
+# Dont require a root password for docs
+EXTRA_USERS_PARAMS = ""
