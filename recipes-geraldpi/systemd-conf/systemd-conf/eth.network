@@ -6,5 +6,5 @@ DHCP=yes
 
 [DHCP]
 RouteMetric=10
-
+ClientIdentifier=mac
 
