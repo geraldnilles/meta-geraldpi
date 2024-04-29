@@ -1,0 +1,7 @@
+[Unit]
+Description=Periodic NVM Backup Service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nvm_backup.sh
+

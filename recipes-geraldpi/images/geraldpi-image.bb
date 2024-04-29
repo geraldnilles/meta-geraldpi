@@ -15,6 +15,7 @@ IMAGE_INSTALL:append = " \
 	bash-completion \
 	discover \
 	sethostname \
+	nvm-backup \
 	kill-led \
 "
 

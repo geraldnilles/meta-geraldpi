@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer to trigger backup service daily
+
+[Timer]
+OnCalendar=*-*-* 03:00:00  # Backup once a day at 3am
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

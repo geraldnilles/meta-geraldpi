@@ -1,0 +1,13 @@
+[Unit]
+Description=Restore the NVM Backup
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nvm_restore.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=sysinit.target
+
