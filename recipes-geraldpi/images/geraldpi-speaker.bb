@@ -10,12 +10,16 @@ include recipes-geraldpi/images/geraldpi-image.bb
 # Include modules in rootfs
 IMAGE_INSTALL:append = " \
 	wireplumber \
+	wireplumber-modules-meta \
+	wireplumber-default-config \
 	bluez5 \
 	pipewire \
 	pipewire-tools \
 	pipewire-modules-meta \
 	pipewire-spa-plugins-meta \
 	pulseaudio \
+	pulseaudio-misc \
+	pulseaudio-pa-info \
 "
 
 # Update the hostname for this image
