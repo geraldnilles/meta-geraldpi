@@ -13,6 +13,8 @@ IMAGE_INSTALL:append = " \
 	bluez5 \
 	pipewire \
 	pipewire-tools \
+	pipewire-modules-meta \
+	pipewire-spa-plugins-meta \
 	pulseaudio \
 "
 
