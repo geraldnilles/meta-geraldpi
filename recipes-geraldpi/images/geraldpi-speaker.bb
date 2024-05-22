@@ -14,6 +14,7 @@ IMAGE_INSTALL:append = " \
 	pipewire-tools \
 	pipewire-modules \
 	pipewire-spa-plugins \
+	pulseaudio \
 "
 
 # Update the hostname for this image
