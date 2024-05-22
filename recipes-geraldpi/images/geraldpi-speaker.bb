@@ -11,6 +11,7 @@ include recipes-geraldpi/images/geraldpi-image.bb
 IMAGE_INSTALL:append = " \
 	wireplumber \
 	bluez5 \
+	pipewire \
 	pipewire-tools \
 	pipewire-modules \
 	pipewire-spa-plugins \
