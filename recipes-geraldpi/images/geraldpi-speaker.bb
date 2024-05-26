@@ -11,6 +11,7 @@ include recipes-geraldpi/images/geraldpi-image.bb
 IMAGE_INSTALL:append = " \
 	wireplumber \
 	wireplumber-modules-meta \
+	i2c-tools \
 	bluez5 \
 	pipewire \
 	pipewire-tools \
