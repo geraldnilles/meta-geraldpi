@@ -10,6 +10,7 @@ include recipes-geraldpi/images/geraldpi-image.bb
 # Include modules in rootfs
 IMAGE_INSTALL:append = " \
 	wireplumber \
+	wireplumber-modules-meta \
 	bluez5 \
 	pipewire \
 	pipewire-tools \
