@@ -14,14 +14,9 @@ IMAGE_INSTALL:append = " \
 	bluez5 \
 	pipewire \
 	pipewire-tools \
-	pipewire-pulse \
 	pipewire-alsa \
 	pipewire-modules-meta \
 	pipewire-spa-plugins-meta \
-	pulseaudio \
-	pulseaudio-misc \
-	pulseaudio-pa-info \
-	pulseaudio-server \
 "
 
 # Update the hostname for this image
