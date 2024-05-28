@@ -14,7 +14,7 @@ IMAGE_INSTALL:append = " \
 	bluez5 \
 	pipewire \
 	pipewire-tools \
-	alsa-tools \
+	alsa-utils \
 	pipewire-alsa \
 	pipewire-modules-meta \
 	pipewire-spa-plugins-meta \
