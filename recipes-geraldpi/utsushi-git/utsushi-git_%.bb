@@ -51,7 +51,8 @@ FILES:${PN} += " \
 "
 
 EXTRA_OECONF:append = " \
-     --with-boost-libdir=${STAGING_DIR_TARGET}/usr/lib \
+    --with-boost=${STAGING_DIR_TARGET}/usr \
+    --with-boost-libdir=${STAGING_DIR_TARGET}/usr/lib \
     --with-magick \
     --with-jpeg \
     --with-tiff \
