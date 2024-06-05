@@ -35,7 +35,7 @@ RDEPENDS:${PN} += " \
 "
 
 DEPENDS += " \
-	boost \
+	boost-dev \
 	libusb1 \
 	libtool \
 	libxslt-native \
