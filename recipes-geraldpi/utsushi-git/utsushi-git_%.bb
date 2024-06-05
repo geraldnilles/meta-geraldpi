@@ -57,7 +57,7 @@ EXTRA_OECONF:append = " \
     --with-tiff \
 "
 
-CXXFLAGS:append = " -Wno-error=deprecated-declarations -std=c++14 "
+CXXFLAGS:append = " -Wno-error=deprecated-declarations -std=c++11 "
 
 # Generated library files do nto contains a version number so Yocto gets mad.
 # This tells the packacing script to skip that check
