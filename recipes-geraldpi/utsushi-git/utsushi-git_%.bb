@@ -29,13 +29,8 @@ do_configure:prepend() {
 	cd $olddir
 }
 
-RDEPENDS:${PN} += " \
-	boost \
-	libusb1 \
-"
-
 DEPENDS += " \
-	boost-dev \
+	boost \
 	libusb1 \
 	libtool \
 	libxslt-native \
