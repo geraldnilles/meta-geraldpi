@@ -45,8 +45,11 @@ FILES:${PN} += " \
 	${libdir} \
 "
 
+PACKAGECONFIG ??= "boost"
+
+PACKAGECONFIG[boost] = "--with-boost=${STAGING_LIBDIR},--without-boost,boost"
+
 EXTRA_OECONF:append = " \
-    --with-boost=${STAGING_DIR_TARGET}/usr \
     --with-magick \
     --with-jpeg \
     --with-tiff \
