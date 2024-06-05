@@ -52,13 +52,12 @@ FILES:${PN} += " \
 
 EXTRA_OECONF:append = " \
     --with-boost=${STAGING_DIR_TARGET}/usr \
-    --with-boost-libdir=${STAGING_DIR_TARGET}/usr/lib \
     --with-magick \
     --with-jpeg \
     --with-tiff \
 "
 
-CXXFLAGS:append = " -Wno-error=deprecated-declarations "
+CXXFLAGS:append = " -Wno-error=deprecated-declarations -std=c++14 "
 
 # Generated library files do nto contains a version number so Yocto gets mad.
 # This tells the packacing script to skip that check
