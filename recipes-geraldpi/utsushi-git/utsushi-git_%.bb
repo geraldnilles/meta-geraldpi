@@ -47,7 +47,7 @@ FILES:${PN} += " \
 
 PACKAGECONFIG ??= "boost"
 
-PACKAGECONFIG[boost] = "--with-boost=${STAGING_LIBDIR},--without-boost,boost"
+PACKAGECONFIG[boost] = "--with-boost-libdir=${STAGING_LIBDIR},--without-boost,boost"
 
 EXTRA_OECONF:append = " \
     --with-magick \
@@ -56,6 +56,8 @@ EXTRA_OECONF:append = " \
 "
 
 CXXFLAGS:append = " -Wno-error=deprecated-declarations -std=c++11 "
+
+CPPFLAGS:append = " -I${STAGING_INCDIR} "
 
 # Generated library files do nto contains a version number so Yocto gets mad.
 # This tells the packacing script to skip that check
