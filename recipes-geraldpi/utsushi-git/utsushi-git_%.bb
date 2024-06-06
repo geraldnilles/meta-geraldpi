@@ -57,6 +57,8 @@ EXTRA_OECONF:append = " \
 
 CXXFLAGS:append = " -Wno-error=deprecated-declarations -std=c++11 "
 
+BOOST_CPPFLAGS = "-I${STAGING_INCDIR}/boost"
+
 CPPFLAGS:append = " -I${STAGING_INCDIR} "
 
 # Generated library files do nto contains a version number so Yocto gets mad.
