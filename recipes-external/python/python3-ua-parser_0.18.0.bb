@@ -9,3 +9,6 @@ PYPI_PACKAGE = "ua-parser"
 
 inherit pypi python_setuptools_build_meta
 
+RDEPENDS:${PN} += " \
+    ${PYTHON_PN}-pyyaml \
+"
