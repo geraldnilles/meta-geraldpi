@@ -12,3 +12,7 @@ inherit pypi python_setuptools_build_meta
 RDEPENDS:${PN} += " \
     ${PYTHON_PN}-pyyaml \
 "
+
+DEPENDS:${PN} += " \
+    ${PYTHON_PN}-pyyaml \
+"
