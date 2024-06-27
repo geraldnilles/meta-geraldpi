@@ -13,6 +13,6 @@ RDEPENDS:${PN} += " \
     ${PYTHON_PN}-pyyaml \
 "
 
-DEPENDS:${PN} += " \
+DEPENDS += " \
     ${PYTHON_PN}-pyyaml \
 "
