@@ -10,7 +10,7 @@ PYPI_PACKAGE = "pywebio"
 inherit pypi setuptools3
 
 RDEPENDS:${PN} += " \
-    ${PYTHON_PN}-tornado \
-    ${PYTHON_PN}-user-agents \
+    python3-tornado \
+    python3-user-agents \
 "
 

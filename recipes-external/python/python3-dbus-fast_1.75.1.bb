@@ -10,5 +10,5 @@ PYPI_PACKAGE = "dbus_fast"
 inherit pypi setuptools3
 
 RDEPENDS:${PN} += " \
-    ${PYTHON_PN}-async-timeout \
+    python3-async-timeout \
 "

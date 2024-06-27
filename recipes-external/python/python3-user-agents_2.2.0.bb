@@ -10,6 +10,6 @@ PYPI_PACKAGE = "user-agents"
 inherit pypi setuptools3
 
 RDEPENDS:${PN} += " \
-    ${PYTHON_PN}-ua-parser \
+    python3-ua-parser \
 "
 

@@ -10,6 +10,6 @@ PYPI_PACKAGE = "bleak"
 inherit pypi setuptools3
 
 RDEPENDS:${PN} += " \
-    ${PYTHON_PN}-async-timeout \
-    ${PYTHON_PN}-dbus-fast \
+    python3-async-timeout \
+    python3-dbus-fast \
 "
