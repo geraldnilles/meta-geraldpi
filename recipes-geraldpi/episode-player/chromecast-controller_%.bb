@@ -23,8 +23,8 @@ do_install() {
         install -d ${D}/${systemd_unitdir}/system
         install -m 0644 ${S}/systemd/* ${D}/${systemd_unitdir}/system
 
-        install -d ${D}${libdir}/python3.10/site-packages
-	install -m 0755 ${S}/castcontroller.py ${D}${libdir}/python3.10/site-packages/
+        install -d ${D}${libdir}/python3.12/site-packages
+	install -m 0755 ${S}/castcontroller.py ${D}${libdir}/python3.12/site-packages/
 
 
         install -d ${D}${webapp_dir}
