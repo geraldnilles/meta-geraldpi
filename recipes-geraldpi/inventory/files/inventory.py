@@ -1,16 +1,25 @@
 #!/usr/bin/env python3
 
 import os
-
+import sqlite3
 from pywebio import start_server
 import pywebio
 from pywebio.output import *
 from pywebio.pin import *
 
-import sqlite3
+# Define the database folder and file path
+DB_FOLDER = '/media/inventory'
+DB_FILE = os.path.join(DB_FOLDER, 'garage_inventory.db')
+
+def ensure_db_folder():
+    """Ensure the database folder exists."""
+    if not os.path.exists(DB_FOLDER):
+        os.makedirs(DB_FOLDER)
+        print(f"Created database folder: {DB_FOLDER}")
 
 def init_db():
-    conn = sqlite3.connect('garage_inventory.db')
+    ensure_db_folder()
+    conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE IF NOT EXISTS inventory (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -24,7 +33,7 @@ def init_db():
 
 def render_table(arg=None):
     with use_scope("table", clear=True):
-        conn = sqlite3.connect('garage_inventory.db')
+        conn = sqlite3.connect(DB_FILE)
         cursor = conn.cursor()
         cursor.execute("SELECT id, name, quantity, section, grid FROM inventory WHERE lower(name) LIKE ?", 
                        ('%' + pin.filter + '%',))
@@ -46,7 +55,7 @@ def add_item():
         toast("All fields are required", color="error")
         return
 
-    conn = sqlite3.connect('garage_inventory.db')
+    conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     cursor.execute("INSERT INTO inventory (name, quantity, section, grid) VALUES (?, ?, ?, ?)",
                    (name, quantity, section, grid))
@@ -57,7 +66,7 @@ def add_item():
     clear_add_scope()
 
 def delete_item(item_id):
-    conn = sqlite3.connect('garage_inventory.db')
+    conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     cursor.execute("DELETE FROM inventory WHERE id=?", (item_id,))
     conn.commit()
@@ -99,8 +108,6 @@ def main():
         put_input("grid",label="Coordinates",placeholder="i.e. B3")
         put_button("Add",onclick=add_item)
 
-
 if __name__ == '__main__':
     pywebio.config(theme="dark",css_style=".container { max-width: 1200px; }")
     start_server(main, port=8088, debug=True)
-

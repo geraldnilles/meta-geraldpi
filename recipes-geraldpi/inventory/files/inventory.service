@@ -1,0 +1,14 @@
+[Unit]
+Description=Garage Inventory Management System
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/inventory.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
+
