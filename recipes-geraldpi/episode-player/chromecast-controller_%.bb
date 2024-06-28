@@ -9,7 +9,7 @@ SRC_URI = " \
 "
 
 # Use this if you want to use a specific commit
-SRCREV = "6ec33807e8b0ea4f628ea35e163989acebe31dea"
+SRCREV = "c9a3045531dc888d1f2e0c3cb0049f3549912776"
 
 # Use this if you want to automatically pull the latest commit
 #SRCREV = "${AUTOREV}"
