@@ -9,10 +9,10 @@ SRC_URI = " \
 "
 
 # Use this if you want to use a specific commit
-# SRCREV = "12963c790fcbfd46b86b423bd16d16fa69827f76"
+SRCREV = "43efda7fc09dab21acd3b026631c84a2ab52ebf2"
 
 # Use this if you want to automatically pull the latest commit
-SRCREV = "${AUTOREV}"
+#SRCREV = "${AUTOREV}"
 PV = "1.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
