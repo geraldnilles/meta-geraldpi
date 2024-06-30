@@ -3,7 +3,7 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
-    file://wpa_supplicant-wlan0.conf \
+    file://wpa_supplicant.conf.in \
     file://wifi.network \
 "
 
@@ -13,11 +13,17 @@ FILES:${PN} += " \
 	${sysconfdir}/systemd/network/* \
 "
 
+# Embedd the Wifi Password and SSID into the config file
+do_compile:append() {
+    sed -e 's,@WIFI_SSID@,${WIFI_SSID},g' \
+        -e 's,@WIFI_PASSWORD@,${WIFI_PASSWORD},g' \
+        ${WORKDIR}/wpa_supplicant.conf.in > ${WORKDIR}/wpa_supplicant.conf
+}
+
 # Install these files into the /etc folder
 do_install:append() {
     install -d ${D}${sysconfdir}/wpa_supplicant
-    install -m 0644 ${WORKDIR}/wpa_supplicant-wlan0.conf ${D}${sysconfdir}/wpa_supplicant
-    /usr/bin/wpa_passphrase ${WIFI_SSID} ${WIFI_PASSWORD} >> ${D}${sysconfdir}/wpa_supplicant/wpa_supplicant-wlan0.conf
+    install -m 0644 ${WORKDIR}/wpa_supplicant.conf ${D}${sysconfdir}/wpa_supplicant/wpa_supplicant-wlan0.conf
 
     # Add Wifi config to the SystemD NetworkD
     install -d ${D}${sysconfdir}/systemd/network
