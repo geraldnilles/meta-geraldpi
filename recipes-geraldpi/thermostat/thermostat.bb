@@ -37,6 +37,7 @@ RDEPENDS:${PN} += " \
 	python3-flask \
 	python3-matplotlib \
 	python3-packaging \
+	python3-pywebio \
 	bluez5 \
 "
 
