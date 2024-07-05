@@ -1,9 +1,15 @@
 [Unit]
 Description=Sync files between all similar instances on the network
-#After=network.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/sync_all
 Environment="HOME=/home/root"
+Restart=on-failure
+RestartSec=30s
+
+[Install]
+WantedBy=multi-user.target
 

@@ -2,8 +2,10 @@
 Description=Periodic Sync docs between all geraldpi-document instances
 
 [Timer]
-OnCalendar=hourly
-RandomizedDelaySec=600
+OnBootSec=5min
+OnUnitActiveSec=5min
+RandomizedDelaySec=30sec
+AccuracySec=1s
 Persistent=true
 
 [Install]
