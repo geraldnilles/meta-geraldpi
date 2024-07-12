@@ -10,7 +10,10 @@ SRC_URI = " \
 "
 
 # Use this if you want to use a specific commit
-SRCREV = "6550340235a9be32c5b5567b67916b5279aa1b7d"
+# Last Good Rev before PyWebio switch
+#SRCREV = "6550340235a9be32c5b5567b67916b5279aa1b7d"
+SRCREV = "2dce30f675d7f8ae109359e24643c4874809ee99"
+
 
 # Use this if you want to automatically pull the latest commit
 # SRCREV = "${AUTOREV}"
