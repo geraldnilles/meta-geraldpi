@@ -57,7 +57,7 @@ my_ssh root@$1 mount /dev/mmcblk0p1 /boot
 if [ -z $ROOT_ONLY ]
 then
 # Get the Image boog files from the .env file
-source $3
+source ./$3
 for pair in $IMAGE_BOOT_FILES
 do
 	echo $pair

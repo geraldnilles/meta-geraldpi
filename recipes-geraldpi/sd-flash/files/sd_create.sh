@@ -71,7 +71,7 @@ mkdir $MOUNTPOINT
 mount "$11" $MOUNTPOINT
 
 # Get the Image boog files from the .env file
-source $3
+source ./$3
 for pair in $IMAGE_BOOT_FILES
 do
 	#echo $pair
