@@ -14,7 +14,7 @@ SRC_URI = " \
 #SRCREV = "6550340235a9be32c5b5567b67916b5279aa1b7d"
 
 # Latest PyWebIO Version
-SRCREV = "e442306553edb75b0f3a1e0f8dc9160d196a313b"
+SRCREV = "4cef88a0b09e22a638ab8e0bfcdf8b744864e1cd"
 
 
 # Use this if you want to automatically pull the latest commit
