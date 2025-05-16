@@ -47,4 +47,4 @@ RDEPENDS:${PN} += " \
 "
 
 # SYSTEMD_SERVICE:${PN} = " thermostat.timer temp-scanner.service offset_reset.timer webserver.service warm_up.timer cool_down.timer overnight_cold.timer "
-SYSTEMD_SERVICE:${PN} = " thermostat.timer temp-scanner.service offset_reset.timer webserver.service "
+SYSTEMD_SERVICE:${PN} = " thermostat.timer temp-scanner.service webserver.service "
