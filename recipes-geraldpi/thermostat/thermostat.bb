@@ -14,7 +14,7 @@ SRC_URI = " \
 #SRCREV = "6550340235a9be32c5b5567b67916b5279aa1b7d"
 
 # Latest PyWebIO Version
-SRCREV = "4cef88a0b09e22a638ab8e0bfcdf8b744864e1cd"
+SRCREV = "414088ada03a80cb4044e5ee97a8aa156067de12"
 
 
 # Use this if you want to automatically pull the latest commit
@@ -46,4 +46,4 @@ RDEPENDS:${PN} += " \
 	bluez5 \
 "
 
-SYSTEMD_SERVICE:${PN} = " thermostat.timer temp-scanner.service offset_reset.timer webserver.service "
+SYSTEMD_SERVICE:${PN} = " thermostat.timer temp-scanner.service offset_reset.timer webserver.service warm_up.timer cool_down.timer overnight_cold.timer "
