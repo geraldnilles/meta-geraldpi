@@ -1,6 +1,6 @@
 [Unit]
 Description=Set Hostname from Raspberry Pi Serial Number
-Before=network-pre.target
+Before=network-pre.target avahi-daemon.service
 Wants=network-pre.target
 
 [Service]
