@@ -7,7 +7,6 @@ include recipes-geraldpi/images/geraldpi-image.bb
 IMAGE_INSTALL:append = " \
 	document-server \
 	password-store \
-	scanner-scripts \
 	sync-scripts \
 	cputweaks \
 "
