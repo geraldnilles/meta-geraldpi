@@ -1,13 +1,20 @@
 [Unit]
-Description=Periodic Sync docs between all geraldpi-document instances
+Description=Run sync-scripts.service every 10 minutes, after time synchronization
+# This timer will not start scheduling until time-sync.target is reached
+Requires=time-sync.target
+After=time-sync.target
 
 [Timer]
+# Run 5 minutes after boot (and after time-sync.target is reached) for the initial run
 OnBootSec=5min
-OnUnitActiveSec=5min
-RandomizedDelaySec=30sec
+# Subsequently, run 10 minutes after sync-scripts.service was last deactivated
+OnUnitActiveSec=10min
+# Add a random delay of up to 1 minute to spread out timer events
+RandomizedDelaySec=1min
+# Define timer accuracy
 AccuracySec=1s
+# If a scheduled run was missed (e.g., system was off), run it once when the timer activates
 Persistent=true
 
 [Install]
 WantedBy=timers.target
-

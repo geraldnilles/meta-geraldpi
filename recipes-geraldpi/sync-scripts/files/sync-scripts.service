@@ -7,9 +7,4 @@ Wants=network-online.target
 Type=oneshot
 ExecStart=/usr/bin/sync_all
 Environment="HOME=/home/root"
-Restart=on-failure
-RestartSec=30s
-
-[Install]
-WantedBy=multi-user.target
 
