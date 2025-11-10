@@ -8,8 +8,13 @@ IMAGE_INSTALL:append = " \
 	document-server \
 	password-store \
 	sync-scripts \
-	cputweaks \
 "
+
+# No need to enable Wifi since this will be hardwired
+IMAGE_INSTALL:remove = " \
+	wpa-supplicant \
+"
+
 # TODO Add my own "scan, convert to PDF and commit to git" script that requires
 # utsushi and tesseract
 
