@@ -11,6 +11,7 @@ include recipes-geraldpi/images/geraldpi-image.bb
 IMAGE_INSTALL:append = " \
 	episode-player \
 	todo-list \
+        btrfs-tools \
 	inventory \
 "
 

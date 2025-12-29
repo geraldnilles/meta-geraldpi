@@ -13,6 +13,7 @@ IMAGE_INSTALL:append = " \
 	tzdata \
 	bash \
 	bash-completion \
+        dosfstools \
 	discover \
 	sethostname \
 	nvm-backup \
