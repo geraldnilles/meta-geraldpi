@@ -43,6 +43,7 @@ RDEPENDS:${PN} += " \
 	python3-matplotlib \
 	python3-packaging \
 	python3-pywebio \
+        python3-paho-mqtt \
 	bluez5 \
 "
 
