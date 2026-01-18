@@ -3,6 +3,6 @@
 
 # runs each sync scripts
 
-sync_docs
-sync_passwords
+timeout 120 sync_docs || true
+timeout 120 sync_passwords || true
 
