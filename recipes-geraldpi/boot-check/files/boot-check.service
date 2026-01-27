@@ -1,0 +1,23 @@
+[Unit]
+Description=Check and Fix FAT32 on /dev/mmcblk0p1
+After=local-fs.target
+
+[Service]
+Type=oneshot
+# Disable startup timeout so systemd doesn't kill the sleep
+TimeoutStartSec=0
+
+# Treat exit code 0 (clean) and 1 (errors fixed) as success
+SuccessExitStatus=0 1
+
+# Delay for 3 minutes (180 seconds)
+ExecStartPre=/bin/sleep 60
+
+# Run fsck directly
+# -a: Automatic repair
+# -w: Write changes immediately
+# -v: Verbose logging to journal
+ExecStart=/sbin/fsck.vfat -a -w -v /dev/mmcblk0p1
+
+[Install]
+WantedBy=multi-user.target
