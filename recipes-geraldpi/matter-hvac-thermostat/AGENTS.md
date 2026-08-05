@@ -11,8 +11,10 @@ Yocto recipe for `matter-hvac-thermostat`, pulled from
 - Services: 6 systemd units — `thermostat-setup`, `thermostat-sensor`, `thermostat-control`,
   `thermostat-gpio`, `thermostat-mqtt`, `thermostat-web`. All are listed in `SYSTEMD_SERVICE`.
 - Runtime deps: `python3`, `python3-flask`, `python3-paho-mqtt`, `python3-bleak`, `bluez5`,
-  `libgpiod-tools` (provides `gpioset`), `mosquitto` (MQTT broker for the HA bridge).
-- Config: `/etc/thermostat/defaults.json` must be edited per-device (sensor MACs, MQTT broker).
+  `libgpiod-tools` (provides `gpioset`). No local MQTT broker is installed — the MQTT daemon
+  connects to the external broker on the Home Assistant device (configured in `defaults.json`).
+- Config: `/etc/thermostat/defaults.json` must be edited per-device (sensor MACs, MQTT broker
+  host/credentials for the external Home Assistant broker).
 
 ## Related recipes
 

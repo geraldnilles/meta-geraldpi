@@ -35,7 +35,6 @@ RDEPENDS:${PN} += " \
     python3-bleak \
     bluez5 \
     libgpiod-tools \
-    mosquitto \
 "
 
 SYSTEMD_SERVICE:${PN} = " \
