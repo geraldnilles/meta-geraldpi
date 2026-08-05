@@ -20,3 +20,22 @@ Yocto recipe for `matter-hvac-thermostat`, pulled from
 
 - `recipes-geraldpi/thermostat/thermostat.bb` is the *older* (pre-Matter) thermostat project.
   `recipes-geraldpi/images/geraldpi-thermostat.bb` still installs the old `thermostat` recipe.
+
+## Systemd unit path gotcha (IMPORTANT)
+
+The upstream `Makefile` treats `UNITDIR` as the **complete** destination
+directory for unit files (it does NOT append `/system` itself). The recipe
+therefore MUST pass `UNITDIR=${systemd_system_unitdir}` (i.e.
+`/lib/systemd/system`), NOT `UNITDIR=${systemd_unitdir}` (`/lib/systemd`).
+
+If `UNITDIR=${systemd_unitdir}` is used, the `.service` files land in
+`${D}/lib/systemd/*.service` and the `systemd` bbclass's
+`systemd_check_services()` (which only searches `${sysconfdir}/systemd/system`,
+`${systemd_system_unitdir}`, and `${systemd_user_unitdir}`) will fail with:
+
+```
+ERROR: matter-hvac-thermostat-1.0+git-r0 do_package: Didn't find service unit 'thermostat-setup.service', specified in SYSTEMD_SERVICE:matter-hvac-thermostat.
+```
+
+Verified by local simulation: `make install DESTDIR=... UNITDIR=/lib/systemd/system`
+puts all 6 units in `lib/systemd/system/`.

@@ -19,7 +19,7 @@ PV = "1.0+git${SRCPV}"
 S = "${WORKDIR}/git"
 
 do_install() {
-    oe_runmake install DESTDIR=${D} PREFIX=${prefix} SYSCONFDIR=${sysconfdir} UNITDIR=${systemd_unitdir}
+    oe_runmake install DESTDIR=${D} PREFIX=${prefix} SYSCONFDIR=${sysconfdir} UNITDIR=${systemd_system_unitdir}
 }
 
 FILES:${PN} += " \
