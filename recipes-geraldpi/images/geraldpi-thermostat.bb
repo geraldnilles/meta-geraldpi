@@ -9,7 +9,7 @@ include recipes-geraldpi/images/geraldpi-image.bb
 
 # Include modules in rootfs
 IMAGE_INSTALL:append = " \
-	thermostat \
+	matter-hvac-thermostat \
 	cputweaks \
 "
 
