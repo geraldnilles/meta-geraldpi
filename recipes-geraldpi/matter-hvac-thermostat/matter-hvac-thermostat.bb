@@ -37,6 +37,9 @@ RDEPENDS:${PN} += " \
     libgpiod-tools \
 "
 
+# The schedule .service units are oneshot and are pulled in by their timers
+# (Unit=...), so they are intentionally NOT enabled directly. Only the timers
+# are listed here, matching upstream's `systemctl enable --now ...timer` flow.
 SYSTEMD_SERVICE:${PN} = " \
     thermostat-setup.service \
     thermostat-sensor.service \
@@ -44,4 +47,6 @@ SYSTEMD_SERVICE:${PN} = " \
     thermostat-gpio.service \
     thermostat-mqtt.service \
     thermostat-web.service \
+    thermostat-schedule-morning.timer \
+    thermostat-schedule-night.timer \
 "
