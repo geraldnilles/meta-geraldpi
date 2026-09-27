@@ -8,7 +8,7 @@ SRC_URI = "https://git.zx2c4.com/password-store/snapshot/password-store-1.7.4.ta
 	file://pass-term-hack.sh \
 "
 
-SRC_URI[sha256sum] = "cfa9faf659f2ed6b38e7a7c3fb43e177d00edbacc6265e6e32215ff40e3793c0"
+SRC_URI[sha256sum] = "4c2d0a8b99df8915a87099607a8d912fd05d30651b6f014745c14e4ca8dbbfb7"
 
 
 do_install () {
